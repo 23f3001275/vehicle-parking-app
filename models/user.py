@@ -1,9 +1,9 @@
-from app import db
+from extensions import db
 from sqlalchemy import CheckConstraint
 
 class User(db.Model):
     __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(30), unique=True, nullable=False)
     password = db.Column(db.String(30), nullable=False)
@@ -13,4 +13,4 @@ class User(db.Model):
     reserved = db.relationship('ReservedParkingSpot', backref='u')
 
     def __repr__(self):
-        return f'<User {self.user_name}>'
+        return f'<User {self.username}>'

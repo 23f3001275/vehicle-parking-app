@@ -1,9 +1,9 @@
-from app import db
+from extensions import db
 # from datetime import datetime, timezone
 
 class ReservedParkingSpot(db.Model):
     __tablename__ = 'reservedparkingspots'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     spot_id = db.Column(db.Integer, db.ForeignKey('parkingspots.id', ondelete='CASCADE'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))
     park_timestamp = db.Column(db.DateTime, nullable=False)

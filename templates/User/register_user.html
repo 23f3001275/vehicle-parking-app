@@ -1,0 +1,45 @@
+{% extends "./User/base_user.html" %}
+
+
+{% block title %} Register page {% endblock %}
+
+
+{% block body %}
+<div class="border border-black mt-5 d-flex justify-content-center" style="max-width:fit-content; margin:auto;">
+    <h2> User Signup </h2>
+    <form action="/register" method="POST" style="padding:10px;">
+        <div class="register">
+            <h7> Email ID </h7>
+            <input type="email" class="form-control" name="email"><br>
+        </div>
+
+        <div class="register">
+            <h7> Username </h7>
+            <input type="text" class="form-control" name="username"><br>
+        </div>
+
+        <div class="register">
+            <h7> Password </h7>
+            <input type="password" class="form-control" name="password"><br>
+        </div>
+
+        <div class="register">
+            <h7> Fullname </h7>
+            <input type="name" class="form-control" name="fullname"><br>
+        </div>
+
+        <div class="register">
+            <h7> Address </h7>
+            <input type="address" class="form-control" name="address"><br>
+        </div>
+
+        <div class="register">
+            <h7> Pincode </h7>
+            <input type="number" class="form-control" name="pincode"><br>
+        </div>
+
+        <button type="submit" style="padding: 5px;width: 100px;background-color: aqua; margin: 10px;">Register</button><br>
+        <a href="/login" style="color: orangered; margin: 5px;">Login here!</a>
+    </form>
+</div>
+{% endblock %}

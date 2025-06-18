@@ -1,0 +1,19 @@
+body{
+    text-align: center;
+}
+.content{
+    align-items: center;
+    text-align: center;
+}
+table{
+    align-items: center;
+    text-align: center; 
+}
+.register{
+    margin:20px;
+    align-items: center;
+}
+.login{
+    margin:20px;
+    align-items: center;
+}
