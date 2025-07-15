@@ -5,17 +5,21 @@
 
 
 {% block body %}
-<div class="border border-black mt-5 d-flex justify-content-center" style="max-width:fit-content; margin:auto;">
-    <h2 style="color:rgb(0, 0, 0);">Login</h2>
-    <form action="/login" method="POST">
+<div class="border border-black mx-auto p-5 m-5" style="max-width:600px; text-align:center;">
+    <h2 style="color:rgba(0, 0, 0, 0.203);">Login</h2>
+    <form action="/login_user" method="POST">
         <!-- <div class="login">
             <h7> Email ID </h7>
             <input type="email" name="email"><br>
         </div> -->
 
+        {% if login_success1 %}
+        <div class="alert alert-danger" role="alert"> User not found </div>
+        {% endif %}
+
         <div class="login">
             <h7> Username </h7>
-            <input type="text" class="form-control" name="user_name"><br>
+            <input type="name" class="form-control" name="user_name"><br>
         </div>
 
         <div class="login">
@@ -24,7 +28,7 @@
         </div>
 
         <button type="submit" style="padding:5px; width:100px;background-color: aqua; margin:10px;">Login</button><br>
-        <a href="/register" style="color: orangered; margin: 5px;">Register here!</a>
+        <a href="/register_user" style="color: orangered; margin: 5px;">Register here!</a>
     </form>
 </div>
 {% endblock %}

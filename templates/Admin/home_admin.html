@@ -1,9 +1,7 @@
 {% extends "./Admin/base_admin.html" %}
 
-
-
 {% block head %}
-Home|User
+Home|Admin
 {% endblock %}
 
 
@@ -11,44 +9,54 @@ Home|User
 
 <div>
 
-    <div class="card position-absolute start-50 translate-middle-x"style="width:80%; align-items:center;">
-        <div class="card-body">
+    <!-- <div class="card position-absolute start-50 translate-middle-x"style="width:80%; align-items:center;"> -->
+        <!-- <div class="card-body">
+            <h3> Parking Lots </h3>
+        </div> -->
+        <!-- <h2 class="position-absolute top-5 start-50 translate-middle-x"> Parking Lots</h2> -->
+    <!-- </div> -->
+
+<div class="card start-50 translate-middle-x m-5"style="width:80%; align-items:center;">
+        <div class="card-body" >
             <h3> Parking Lots </h3>
         </div>
-        <!-- <h2 class="position-absolute top-5 start-50 translate-middle-x"> Parking Lots</h2> -->
     </div>
 
-    <div>
-        <div class="row">
-            <div class="col-sm-6 mb-3 mb-sm-0">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
+    <br>
+    {% for item in lot_data %}
+    
+        {% if loop.index0 % 3 == 0 %}
+            <div class="row mx-auto ">
+        {% endif %}
+
+    <div class="col-md-3 m-3">
+        <div class="card p-3" style="width:350px; text-align:center;">
+            <div class="card-body">
+                <h5 class="card-title">Location: {{ item.lot.prime_loc_name }}</h5>
+                <p class="card-text">Price: {{ item.lot.price }}</p>
+                <p class="card-text">Maximum Spots: {{ item.lot.max_spots }}</p>
+                <p class="card-text">Address: {{ item.lot.address }}</p>
+                <p class="card-text">Pincode: {{ item.lot.pincode }}</p>
+                <p class="card-text">Occupied: {{ item.occupied }}</p>
+                <p class="card-text">Available: {{ item.available }}</p>
+
+                <a class="btn btn-dark" href="{{url_for('displayLot', admin_name=admin_name, login_success=login_success, lot_id=item.lot.id)}}"> Click here to see the lot</a>
             </div>
         </div>
-</div>
+    </div>
 
+        {% if loop.index0 % 3 == 2 or loop.last %}
+            </div>
+        {% endif %}
 
+    {% endfor %}
 
         <!-- for cards of parking lots -->
-    </div>
 
     <div>
-        <button class="bg-danger position-absolute start-50 translate-middle-x"> Add Lot + </button>
+        <a class="btn btn-danger bg-danger position-absolute start-50 translate-middle-x m-5" href="{{url_for('addLotAdmin', admin_name=admin_name, login_success=login_success)}}"> 
+            Add Lot + </a>
     </div>
-</div>
+ <!-- </div> -->
 
 {% endblock %}

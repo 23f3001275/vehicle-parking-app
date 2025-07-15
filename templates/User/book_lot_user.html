@@ -1,0 +1,64 @@
+{% extends './User/base_user.html' %}
+{% block head %}Book Lot{% endblock %}
+{% block body %}
+<div class="border border-black mt-5 mx-auto m-5 p-5" style="max-width: 600px;text-align: center;">
+    <h2>Book lot</h2>
+    <form method="POST" action="{{url_for('book_lot_user',user_name=user_name,login_success=login_success,lot_id=lot.id)}}"  style="padding: 10px;">
+
+        <div class="reg">
+            <h7>User ID</h7>
+            <input type="text" class="form-control" value="{{user.id}}" readonly><br>
+        </div>
+
+        <div class="reg">
+            <h7>Lot ID</h7>
+            <input type="text" class="form-control" value="{{lot.id}}" readonly><br>
+        </div>
+
+        <div class="reg">
+            <h7>Spot ID</h7>
+            <input type="text" class="form-control" value="{{spot.id}}" readonly><br>
+        </div>
+
+        <div class="reg">
+            <h7>Location</h7>
+            <input type="text" class="form-control" value="{{lot.prime_loc_name}}" readonly><br>
+        </div>
+
+        <div class="reg">
+            <h7>Price (per spot per hr)</h7>
+            <input type="text" class="form-control" value="{{lot.price}}" readonly><br>
+        </div>
+
+        <div class="reg">
+            <h7>Address</h7>
+            <input type="text" class="form-control" value="{{lot.address}}" readonly><br>
+        </div>
+
+        <div class="reg">
+            <h7>Pincode</h7>
+            <input type="text" class="form-control" value="{{lot.pincode}}" readonly><br>
+        </div>
+
+        <div class="reg">
+            <h7>Vehicle no</h7>
+            <input type="text" class="form-control" name="vehicle_no" placeholder="Enter in caps"><br>
+        </div>
+        <div class="reg">
+            <h7>Time for booking</h7>
+            <input type="datetime-local" class="form-control" name="park_timestamp"><br>
+        </div>
+        <div class="reg">
+            <h7>Leaving Time(Optional)</h7>
+            <input type="datetime-local" class="form-control" name="leave_timestamp"><br>
+            <h7>If you don't mention, by default it will be considered as 11:79 p.m. of today</h7><br>
+        </div>
+
+        <button type="submit" style="padding: 5px;width: 100px;background-color: aqua; margin: 10px;">Book</button><br>
+        
+    </form>
+
+</div>
+
+
+{% endblock %}

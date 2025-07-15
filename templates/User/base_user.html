@@ -15,33 +15,35 @@
   <div class="container-fluid">
     {% if login_success %}
     <a class="navbar-brand">Welcome, {{ user_name }}</a>
-    {% endif %}
  
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" aria-current="page" href="{{url_for('homeUser', user_name=user_name, login_success=login_success)}}">Home</a>
         </li>
         <li class="nav-item">
         <a class="nav-link"> | </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="User/summary_user.html">Summary</a>
+          <a class="nav-link" href="{{url_for('summaryUser', user_name=user_name, login_success=login_success)}}">Summary</a>
         </li>
         <li class="nav-item">
         <a class="nav-link"> | </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="User/login_user.html">Logout</a>
+          <a class="nav-link" href="/">Logout</a>
         </li>
         
         
       </ul>
-      <button type="button" class="btn btn-success">
+      <a class="btn btn-success" href="{{url_for('editProfileUser', user_name=user_name, login_success=login_success)}}">
         Edit profile
-      </button>
+      </a>
     </div>
   </div>
+  {% else %}
+  <h3 class="mx-auto"> VPL </h3>
+     {% endif %}
 </nav>
 
         {% block body %} {% endblock %}

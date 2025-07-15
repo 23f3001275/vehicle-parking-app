@@ -1,16 +1,68 @@
 {% extends "./User/base_user.html" %}
+{% block head %}Home{% endblock %}
 
-{% block title %} User Dashboard {% endblock %}
 
 {% block body %}
 
-{% if login_success %}
-  <div class="alert alert-success" role="alert">
-    Login successful!
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-success fade-out" role="alert">
+      {{ messages[0] }}
+    </div>
+  {% endif %}
+{% endwith %}
+
+
+<div class="card m-5 mx-auto text-center" style="width: 80%;height: 50%;">
+    <h3 class="my-3">Reservations</h3>
+</div>
+
+<div class="card text-center m-5">
+  <div class="card-body" >
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Prime Location Name</th>
+      <th scope="col">Lot number</th>
+      <th scope="col">Spot number</th>
+      <th scope="col">Vehicle number</th>
+      <th scope="col">Price (per hr)</th>
+      <th scope="col">Reservation Timestamp</th>
+      <th scope="col">Parking Timestamp</th>
+      <th scope="col">Actions</th>
+       
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in all_user_data %}
+    {% if item.reserved_status and item.status=="R" %}
+    <tr>
+      <th scope="row">{{loop.index}}</th>
+      <td>{{item.prime_loc_name}}</td>
+      <td>{{item.lot_id}}</td>
+      <td>{{item.spot_id}}</td>
+      <td>{{item.vehicle_no}}</td>
+      <td>₹ {{item.price}}</td>
+      <td>{{item.reserve_timestamp}}</td>
+      <td>{{item.park_timestamp}}</td>
+    
+      <td>
+        <form action="{{ url_for('releaseLotUser', user_name=user_name, login_success=login_success, lot_id=item.lot_id, spot_id=item.spot_id) }}" method="POST">
+            <button class="btn btn-danger" type="submit">Release</button>
+        </form>
+
+      </td>
+    </tr>
+    {% endif %}
+  {%endfor%}
+  </tbody>
+  
+</table>
   </div>
-{% endif %}
-<div class="card start-50 translate-middle-x m-5" style="width:80%; align-items:center;">
-    <h3>Recent parking history</h3>
+</div>
+<div class="card m-5 mx-auto text-center" style="width: 80%;height: 50%;">
+    <h3 class="my-3">Active parking</h3>
 </div>
 <div class="card text-center m-5">
   <div class="card-body" >
@@ -18,45 +70,91 @@
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Location</th>
-      <th scope="col">Vehicle_no</th>
-      <th scope="col">Timestamp</th>
-      <th scope="col">Action</th>
+      <th scope="col">Prime Location Name</th>
+      <th scope="col">Lot number</th>
+      <th scope="col">Spot number</th>
+      <th scope="col">Vehicle number</th>
+      <th scope="col">Price (per hr)</th>
+      <th scope="col">Parking Timestamp</th>
+      <th scope="col">Actions</th>
+       
     </tr>
   </thead>
   <tbody>
+    {% for item in all_user_data %}
+    {% if item.reserved_status and item.status=="O" %}
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{loop.index}}</th>
+      <td>{{item.prime_loc_name}}</td>
+      <td>{{item.lot_id}}</td>
+      <td>{{item.spot_id}}</td>
+      <td>{{item.vehicle_no}}</td>
+      <td>₹ {{item.price}}</td>
+      <td>{{item.park_timestamp}}</td>
+      
+      <td>
+        <form action="{{ url_for('releaseLotUser', user_name=user_name, login_success=login_success, lot_id=item.lot_id, spot_id=item.spot_id) }}" method="POST">
+            <button class="btn btn-danger" type="submit">Release</button>
+        </form>
+
+      </td>
     </tr>
+    {% endif %}
+  {%endfor%}
+  </tbody>
+  
+</table>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center my-4">
+  <a href="{{url_for('searchParking',user_name=user_name,login_success=login_success)}}" class="btn btn-info">
+    Searching for new parking?</a>
+</div>
+
+
+<div class="card m-5 mx-auto text-center" style="width: 80%;height: 50%;">
+    <h3 class="my-3">Recent parking history</h3>
+</div>
+
+<div class="card text-center m-5">
+  <div class="card-body" >
+    <table class="table">
+  <thead>
     <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
+      <th scope="col">ID</th>
+      <th scope="col">Prime Location Name</th>
+      <th scope="col">Lot ID</th>
+      <th scope="col">Vehicle number</th>
+      <th scope="col">Price (per hr)</th>
+      <th scope="col">Parking Timestamp</th>
+      <th scope="col">Leaving Timestamp</th>
+      <th scope="col">Total Cost</th>
     </tr>
+  </thead>
+  <tbody>
+    {% for item in all_user_data %}
+    {% if not item.reserved_status %}
     <tr>
-      <th scope="row">3</th>
-      <td>John</td>
-      <td>Doe</td>
-      <td>@social</td>
+      <th scope="row">{{ loop.index }}</th>
+      <td>{{item.prime_loc_name}}</td>
+      <td>{{item.lot_id}}</td>
+      <td>{{item.vehicle_no}}</td>
+      <td>₹ {{item.price}}</td>
+      <td>{{item.park_timestamp}}</td>
+      <td>{{item.leave_timestamp}}</td>
+      <td>₹ {{item.cost}}</td>
     </tr>
+    {% endif %}
+{%endfor%}
   </tbody>
 </table>
     
   </div>
   
 </div>
-<div class="d-flex justify-content-center my-4">
-  <button type="button" class="btn btn-outline-primary" >
-    <a href="{{url_for('search_parking', user_name=user_name, login_success=login_success)}}">
-    Searching for new parking?</a>
-  </button>
-</div>
 
 
     
-{{url_for('search_parking', user_name=user_name, login_success=login_success)}}
+
 {% endblock %}

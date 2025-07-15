@@ -13,11 +13,12 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-          <a class="navbar-brand">Welcome</a>
+{% if login_success %}
+    <a class="navbar-brand">Welcome, {{ admin_name }}</a>
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link active" aria-current="page" href="{{url_for('homeAdmin', admin_name=admin_name, login_success=login_success)}}">Home</a>
           </li>
 
           <li class="nav-item">
@@ -25,7 +26,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/summary">Summary</a>
+            <a class="nav-link active" aria-current="page" href="{{ url_for('allUsers',admin_name=admin_name, login_success=login_success)}}">Users</a>
           </li>
 
           <li class="nav-item">
@@ -33,15 +34,24 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/login">Logout</a>
+            <a class="nav-link" href="{{url_for('summaryAdmin', admin_name=admin_name, login_success=login_success)}}">Summary</a>
+          </li>
+
+          <li class="nav-item">
+          <a class="nav-link"> | </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/">Logout</a>
           </li>
 
         </ul>
-        <button type="button" class="btn btn-info">
-          Edit profile
-        </button>
       </div>
     </div>
+
+      {% else %}
+  <h3 class="mx-auto"> VPL </h3>
+     {% endif %}
 </nav>
 
         {% block body %} {% endblock %}

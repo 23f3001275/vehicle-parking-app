@@ -10,6 +10,7 @@ class User(db.Model):
     fullname = db.Column(db.String(50), nullable=False)
     address = db.Column(db.String(200), nullable=False)
     pincode = db.Column(db.Integer, CheckConstraint('pincode<1000000 AND pincode>99999'), comment='Indian PIN code (100001-999999)')
+    vehicle_no = db.Column(db.String(10), unique=True)
     reserved = db.relationship('ReservedParkingSpot', backref='u')
 
     def __repr__(self):

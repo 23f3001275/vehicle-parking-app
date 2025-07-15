@@ -3,8 +3,8 @@ from create_app import app
 from extensions import db
 from models.user import User 
 
-@app.route("/register", methods=["POST","GET"])
-def register_user():
+@app.route("/register_user", methods=["POST","GET"])
+def registerUser():
     if request.method == 'POST':
         user_email = request.form['email']
         user_username = request.form['username']
@@ -23,7 +23,7 @@ def register_user():
         try:
             db.session.add(new_user)
             db.session.commit()
-            return redirect("/login")
+            return redirect("/login_user")
         except:
             return "There was a problem registering you"
         

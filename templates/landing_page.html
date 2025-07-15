@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+Welcome to VPL
+{% endblock %}
+
+{% block body %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <!-- {% if login_success %}
+    <a class="navbar-brand">Welcome, {{ user_name }}</a>
+    {% endif %} -->
+ 
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+        <li class="nav-item">
+          <a class="btn btn-primary" aria-current="page" href="/login_user">Login as User</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link"> | </a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-info" href="/register_user">Register as User</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link"> | </a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-success" href="/login_admin">Login as Admin</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+from flask import render_template,request,redirect,url_for
+from create_app import app
+from extensions import db
+from models.parking_lot import ParkingLot
+from models.parking_spot import ParkingSpot
+
+@app.route("/add_lot_admin/<admin_name>/<login_success>", methods=["POST","GET"])
+def addLotAdmin(admin_name, login_success):
+    if request.method == 'POST':
+        lot_loc_name = request.form['location_name']
+        lot_price = request.form['price']
+        lot_address = request.form['address']
+        lot_pincode = request.form['pincode']
+        lot_max_spots = request.form['max_spots']
+
+        new_lot = ParkingLot(prime_loc_name = lot_loc_name, 
+                             price = lot_price, 
+                             address = lot_address, 
+                             pincode = lot_pincode, 
+                             max_spots = lot_max_spots)
+        
+        try:
+            db.session.add(new_lot)
+            db.session.commit()
+
+            for i in range(new_lot.max_spots):
+                new_spot = ParkingSpot(status=False, lot_id=new_lot.id)
+                db.session.add(new_spot)
+            db.session.commit()
+
+
+            url = url_for('homeAdmin', admin_name=admin_name, login_success=login_success)
+            return redirect(url)
+        except:
+            return "There was a problem registering you"
+        
+    return render_template("Admin/add_lot.html", admin_name=admin_name, login_success=login_success)
