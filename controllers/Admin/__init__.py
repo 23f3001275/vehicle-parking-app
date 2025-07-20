@@ -1,1 +1,1 @@
-__all__=['login_admin','home_admin','all_users','summary_admin','add_lot_admin', 'display_lot']
+__all__=['login_admin','home_admin','all_users','summary_admin','add_lot_admin', 'display_lot','delete_lot','edit_lot']

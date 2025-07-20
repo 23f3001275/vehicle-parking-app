@@ -7,14 +7,12 @@ def loginUser():
     if request.method=='POST':
         user_user_name=request.form['user_name']
         user_pass_word=request.form['pass_word']
-        print(f"Trying to login: {user_user_name}")
-
         user=User.query.filter(User.username==user_user_name,User.password==user_pass_word).first()
-
         if user:
-            url = url_for('homeUser', user_name=user.username, login_success=True)
-            return redirect(url)
+            flash("Login successful!")
+            return redirect(url_for('homeUser',user_name=user.username,login_success=True))
         else:
-            return render_template('User/login_user.html', login_success1=True)
-
-    return render_template('User/login_user.html', login_success1=False)
+            flash("User not found")
+            return render_template('User/login_user.html')
+        
+    return render_template('User/login_user.html')

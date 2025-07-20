@@ -3,27 +3,33 @@ from create_app import app
 from extensions import db
 from models.parking_lot import ParkingLot
 from models.parking_spot import ParkingSpot
+@app.route('/edit_lot/<admin_name>/<login_success>/<lot_id>',methods=['POST','GET'])
+def editLot(admin_name,login_success,lot_id):    
+    lot = ParkingLot.query.filter(ParkingLot.id==lot_id).first()
+    if request.method=='POST':
+        lot.prime_loc_name=request.form['loc_name']
+        lot.price=request.form['price']
+        lot.max_spots=request.form['max_spots']
+        lot.address=request.form['address']
+        lot.pincode=request.form['pincode']
 
-@app.route("/edit_lot/<admin_name>/<login_success>", methods=["GET","POST"])
-def editLot(admin_name, login_success):
-    # # user=User.query.filter(User.username==user_name).first()
-    # user = User.query.filter_by(username=user_name).first_or_404()
 
-    # if request.method == "POST":
-    #     user.username = request.form["username"]
-    #     user.email = request.form["email"]
-    #     user.password = request.form["password"]
-    #     user.address = request.form["address"]
-    #     user.fullname = request.form["fullname"]
-    #     user.pincode = request.form["pincode"]
+        new_max = int(request.form['max_spots'])
+        existing_count = ParkingSpot.query.filter_by(lot_id=lot.id).count()
 
-    #     try:
-    #         db.session.commit()
-    #         url = url_for('homeUser', user_name=user.username, login_success=login_success)
-    #         return redirect(url)
-    #         # return redirect("/update/user_name/login_success/")
-    #     except:
-    #         return "Could not update task"
-    # else:
-    #     return render_template("User/edit_profile_user.html", admin_name=admin_name, login_success=login_success, user=user)
-    pass
+        if new_max > existing_count:
+            for _ in range(new_max - existing_count):
+                new_spot = ParkingSpot(lot_id=lot.id, status="A")
+                db.session.add(new_spot)
+        elif new_max < existing_count:  
+            removable = ParkingSpot.query.filter_by(lot_id=lot.id, status="A").limit(existing_count - new_max).all()
+            for spot in removable:
+                db.session.delete(spot)
+
+       
+        try:
+            db.session.commit()
+            return redirect(url_for('homeAdmin',admin_name=admin_name,login_success=login_success))
+        except:
+            return "there was problem editing the lot"   
+    return render_template('Admin/edit_lot.html',login_success=login_success,admin_name=admin_name,lot=lot)

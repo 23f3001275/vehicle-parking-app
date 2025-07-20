@@ -16,7 +16,7 @@ def editProfileUser(user_name,login_success):
 
         try:
             db.session.commit()
-            return redirect(url_for('home_user',user_name=user.username,login_success=True))
+            return redirect(url_for('homeUser',user_name=user.username,login_success=True))
         except:
             return "there was problem registering you"  
     return render_template('User/edit_profile_user.html',user=user,login_success=login_success,user_name=user_name)

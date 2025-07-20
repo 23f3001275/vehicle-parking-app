@@ -50,7 +50,7 @@ def bookLotUser(user_name, login_success,lot_id):
         try:
             db.session.add(reservation)
             db.session.commit()
-            return redirect(url_for('home_user',user_name=user_name,login_success=login_success))
+            return redirect(url_for('homeUser',user_name=user_name,login_success=login_success))
         except:
             pass
     

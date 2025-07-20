@@ -6,13 +6,17 @@ Display lot
 
 {% block body %}
 <div class="card mx-auto m-5" style="width: 400px;text-align: center;">
-        {% for item in lot_data %}
   <div class="card-body">
-    <h5 class="card-title">Location: {{ item.lot.prime_loc_name }}</h5>
-    <p class="card-text">Price (per spot per hr): {{ item.lot.price }}</p>
-    <p class="card-text">Maximum Spots: {{ item.lot.max_spots }}</p>
-    <p class="card-text">Address: {{ item.lot.address }}</p>
-    <p class="card-text">Pincode: {{ item.lot.pincode }}</p>
+    <h5 class="card-title">Location: {{ lot.prime_loc_name }}</h5>
+    <p class="card-text">Price (per spot per hr): {{ lot.price }}</p>
+    <p class="card-text">Maximum Spots: {{ lot.max_spots }}</p>
+    <p class="card-text">Address: {{ lot.address }}</p>
+    <p class="card-text">Pincode: {{ lot.pincode }}</p>
+    <div class="flex-inline"><p class="card-text">Available:</p><div style="background-color: green; height: 20px; width: 20px;"></div></div>
+    <p class="card-text">Occupied:</p><div style="background-color: red; height: 20px; width: 20px;"></div>
+    <p class="card-text">Reserved:</p><div style="background-color: blue; height: 20px; width: 20px;"></div>
+    
+    {% for item in lot_data %}
   <div class="d-flex flex-wrap " style="max-width: 400px;">
     {% for i in range(item.occupied) %}
       <div class="card m-1" style="background-color: red; height: 20px; width: 20px;"></div>
@@ -20,9 +24,12 @@ Display lot
     {% for i in range(item.available) %}
       <div class="card m-1" style="background-color: green; height: 20px; width: 20px;"></div>
     {% endfor %}
+    {% for i in range(item.reserved) %}
+      <div class="card m-1" style="background-color: blue; height: 20px; width: 20px;"></div>
+    {% endfor %}
   </div>
+{% endfor %}
 
   </div>
-  {% endfor %}
 </div>
 {% endblock %}

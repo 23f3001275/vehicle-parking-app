@@ -5,7 +5,6 @@ from models import User
 from controllers.User import *
 from controllers.Admin import *
 
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///test.db'
 db.init_app(app)
 
 @app.route('/')

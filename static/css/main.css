@@ -9,11 +9,32 @@ table{
     align-items: center;
     text-align: center; 
 }
-.register{
+.reg{
     margin:20px;
     align-items: center;
 }
-.login{
+.log{
     margin:20px;
     align-items: center;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s ease-in-out 2s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    max-height: 100px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
 }

@@ -6,7 +6,6 @@ from models.parking_lot import ParkingLot
 from models.parking_spot import ParkingSpot
 from models.reserved_parking_spot import ReservedParkingSpot
 from datetime import datetime
-
 @app.route('/occupy_lot_user/<user_name>/<login_success>/<lot_id>/<spot_id>',methods=['POST','GET'])
 def occupyLotUser(user_name, login_success,lot_id,spot_id):
     user=User.query.filter(User.username==user_name).first()
@@ -36,7 +35,7 @@ def occupyLotUser(user_name, login_success,lot_id,spot_id):
         try:
             db.session.add(reservation)
             db.session.commit()
-            return redirect(url_for('home_user',user_name=user_name,login_success=login_success))
+            return redirect(url_for('homeUser',user_name=user_name,login_success=login_success))
         except:
             pass
     
