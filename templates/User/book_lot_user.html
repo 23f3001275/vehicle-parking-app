@@ -1,64 +1,69 @@
 {% extends './User/base_user.html' %}
-{% block head %}Book Lot{% endblock %}
+
+{% block head %} Book Lot {% endblock %}
+
 {% block body %}
-<div class="mt-5 mx-auto m-5 p-5 form-container" style="max-width: 600px;text-align: center;">
-    <h2>Book lot</h2>
-    <form method="POST" action="{{url_for('bookLotUser',user_name=user_name,login_success=login_success,lot_id=lot.id)}}"  style="padding: 10px;">
+<div class="main-form-container mx-auto p-5 m-5">
+    <div class="page-header admin-summary-header">
+        <h2 class="main-form-title">Book Lot</h2>
+    </div>
+    <form method="POST" action="{{ url_for('bookLotUser', user_name=user_name, login_success=login_success, lot_id=lot.id) }}" class="main-form">
 
-        <div class="reg">
-            <h7>User ID</h7>
-            <input type="text" class="form-control" value="{{user.id}}" readonly><br>
-        </div>
-
-        <div class="reg">
-            <h7>Lot ID</h7>
-            <input type="text" class="form-control" value="{{lot.id}}" readonly><br>
+        <div class="form-group">
+            <label class="form-label">User ID</label>
+            <input type="text" class="form-control" value="{{ user.id }}" readonly>
         </div>
 
-        <div class="reg">
-            <h7>Spot ID</h7>
-            <input type="text" class="form-control" value="{{spot.id}}" readonly><br>
+        <div class="form-group">
+            <label class="form-label">Lot ID</label>
+            <input type="text" class="form-control" value="{{ lot.id }}" readonly>
         </div>
 
-        <div class="reg">
-            <h7>Location</h7>
-            <input type="text" class="form-control" value="{{lot.prime_loc_name}}" readonly><br>
+        <div class="form-group">
+            <label class="form-label">Spot ID</label>
+            <input type="text" class="form-control" value="{{ spot.id }}" readonly>
         </div>
 
-        <div class="reg">
-            <h7>Price (per spot per hr)</h7>
-            <input type="text" class="form-control" value="{{lot.price}}" readonly><br>
+        <div class="form-group">
+            <label class="form-label">Location</label>
+            <input type="text" class="form-control" value="{{ lot.prime_loc_name }}" readonly>
         </div>
 
-        <div class="reg">
-            <h7>Address</h7>
-            <input type="text" class="form-control" value="{{lot.address}}" readonly><br>
+        <div class="form-group">
+            <label class="form-label">Price (per spot per hour)</label>
+            <input type="text" class="form-control" value="{{ lot.price }}" readonly>
         </div>
 
-        <div class="reg">
-            <h7>Pincode</h7>
-            <input type="text" class="form-control" value="{{lot.pincode}}" readonly><br>
+        <div class="form-group">
+            <label class="form-label">Address</label>
+            <input type="text" class="form-control" value="{{ lot.address }}" readonly>
         </div>
 
-        <div class="reg">
-            <h7>Vehicle no</h7>
-            <input type="text" class="form-control" name="vehicle_no" placeholder="Enter in caps"><br>
-        </div>
-        <div class="reg">
-            <h7>Time for booking</h7>
-            <input type="datetime-local" class="form-control" name="park_timestamp"><br>
-        </div>
-        <div class="reg">
-            <h7>Leaving Time(Optional)</h7>
-            <input type="datetime-local" class="form-control" name="leave_timestamp"><br>
-            <h7>If you don't mention, by default it will be considered as 11:79 p.m. of today</h7><br>
+        <div class="form-group">
+            <label class="form-label">Pincode</label>
+            <input type="text" class="form-control" value="{{ lot.pincode }}" readonly>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="padding:5px; width:100px;">Book</button><br>
+        <div class="form-group">
+            <label for="vehicle_no" class="form-label">Vehicle No</label>
+            <input type="text" class="form-control" name="vehicle_no" placeholder="Enter in caps">
+        </div>
+
+        <div class="form-group">
+            <label for="park_timestamp" class="form-label">Time for Booking</label>
+            <input type="datetime-local" class="form-control" name="park_timestamp">
+        </div>
+
+        <div class="form-group">
+            <label for="leave_timestamp" class="form-label">Leaving Time (Optional)</label>
+            <input type="datetime-local" class="form-control" name="leave_timestamp">
+            <small class="text-muted">If you don't mention, it will default to 11:59 PM today.</small>
+        </div>
+        
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary form-button">Book</button>
+        </div>
         
     </form>
-
 </div>
-
-
 {% endblock %}

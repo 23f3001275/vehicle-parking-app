@@ -5,39 +5,36 @@ Welcome to VPL
 {% endblock %}
 
 {% block body %}
-<!-- Gradient background is set in your CSS -->
-
-<div class="page-header" style="margin-top:4rem;">
-  <h3>
-    <span style="color:#b388eb;font-weight:700;">VPL</span>&nbsp; 
-    <span style="font-weight:400;">– Your Vehicle Parking & Rental Hub</span>
-  </h3>
-  <p style="max-width:520px;margin:0 auto 1.5rem auto;color:#6a0dad;font-size:1.15rem;letter-spacing:0.2px;">
-    Book, rent, or list your parking spots and vehicles with the ease of one hub. 
-    <br>
-    <span style="color:#333;font-size:1rem;">Simple, secure, and transparent for every user.</span>
-  </p>
-</div>
-
-<div class="card" style="max-width:410px;margin:3rem auto 1.5rem auto;padding:2.7rem 2.1rem 2rem 2.1rem;">
-  <div style="text-align:center;margin-bottom:1.35rem;">
+<div class="container py-5 d-flex flex-column align-items-center justify-content-center">
+  
+  <!-- Header Section -->
+  <div class="card w-100 text-center mb-4 p-4 shadow-sm" style="max-width: 900px;">
+    <h3>
+      <span class="brand-primary">VPL</span>
+      <span class="subheading">- Your Vehicle Parking & Rental Hub</span>
+    </h3>
+    <p class="tagline">
+      Book, rent, or list your parking spots and vehicles with ease. <br>
+      <span class="text-muted">Simple, secure, and transparent for every user.</span>
+    </p>
   </div>
-  <h3 class="card-title" style="text-align:center;margin-bottom:0.5rem;">Get Started</h3>
-  <p class="card-text" style="text-align:center;margin-bottom:1.7rem;color:#6a0dad;">
-    Choose your role to book, list, or manage parking and vehicles.
-  </p>
-  <div class="btn-group" style="display:flex;justify-content:center;gap:0.9rem;margin-top:.5rem;">
-    <a class="add-lot-btn" style="min-width:108px;box-shadow:0 2px 12px rgba(106,13,173,0.09);" href="/login_user">Login as User</a>
-    <a class="add-lot-btn" style="background:#fff176;color:#6a0dad;min-width:112px;" href="/register_user">Register as User</a>
-    <a class="add-lot-btn" style="background:#b388eb;color:#fff;min-width:108px;" href="/login_admin">Login as Admin</a>
+
+  <!-- Get Started Section -->
+  <div class="card w-100 text-center mb-4 p-4 shadow-sm" style="max-width: 700px;">
+    <h3 class="mb-3">Get Started</h3>
+    <p>Choose your role to book, list, or manage parking and vehicles.</p>
+    <div class="d-flex flex-wrap justify-content-center gap-3 mt-3">
+      <a class="btn btn-primary" href="/login_user">Login as User</a>
+      <a class="btn btn-primary" href="/register_user">Register as User</a>
+      <a class="btn btn-primary" href="/login_admin">Login as Admin</a>
+    </div>
   </div>
-</div>
 
-<div style="text-align:center;margin-top:2.8rem;">
-  <span style="color:#aaa;font-size:1.05rem;">Don't have an account yet?</span><br>
-  <a href="/register_user" class="add-lot-btn add-lot-floating" title="Quick User Registration" style="font-size:1.11rem;letter-spacing:.8px;">
-    Register Now
-  </a>
-</div>
+  <!-- Register Prompt -->
+  <div class="text-center mt-2">
+    <p>Don't have an account yet?</p>
+    <a href="/register_user" class="btn btn-warning">Register Now</a>
+  </div>
 
+</div>
 {% endblock %}

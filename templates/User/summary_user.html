@@ -9,21 +9,17 @@
       max-width: 100%;
       height: 300px;
     }
-
     .dashboard-container {
       padding-top: 2rem;
     }
-
     .card {
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
-
     .card-title {
       font-weight: 600;
       font-size: 1.1rem;
     }
-
     body {
       background-color: #f8f9fa;
     }
@@ -32,61 +28,60 @@
 
 {% block body %}
 {% if data %}
-<div class="container dashboard-container">
+<div class="container dashboard-container user-summary">
   <h2 class="text-center mb-4">📊 Reservation Analytics</h2>
-
   <div class="row g-4">
 
-    <div class="col-md-6">
-      <div class="card">
+    <div class="col-md-6 chart-wrapper">
+      <div class="card chart-card">
         <div class="card-body">
           <h5 class="card-title">Reservations per Month</h5>
-          <canvas id="monthlyChart"></canvas>
+          <canvas id="monthlyChart" class="chart monthly-chart"></canvas>
         </div>
       </div>
     </div>
 
-    <div class="col-md-6">
-      <div class="card">
+    <div class="col-md-6 chart-wrapper">
+      <div class="card chart-card">
         <div class="card-body">
           <h5 class="card-title">Cost per Month</h5>
-          <canvas id="costChart"></canvas>
+          <canvas id="costChart" class="chart cost-chart"></canvas>
         </div>
       </div>
     </div>
 
-    <div class="col-md-6">
-      <div class="card">
+    <div class="col-md-6 chart-wrapper">
+      <div class="card chart-card">
         <div class="card-body">
           <h5 class="card-title">Reservations by Parking Lot</h5>
-          <canvas id="lotChart"></canvas>
+          <canvas id="lotChart" class="chart lot-chart"></canvas>
         </div>
       </div>
     </div>
 
-    <div class="col-md-6">
-      <div class="card">
+    <div class="col-md-6 chart-wrapper">
+      <div class="card chart-card">
         <div class="card-body">
           <h5 class="card-title">Reservation Status</h5>
-          <canvas id="statusChart"></canvas>
+          <canvas id="statusChart" class="chart status-chart"></canvas>
         </div>
       </div>
     </div>
 
-    <div class="col-md-6">
-      <div class="card">
+    <div class="col-md-6 chart-wrapper">
+      <div class="card chart-card">
         <div class="card-body">
           <h5 class="card-title">Weekly Reservation Trend</h5>
-          <canvas id="weeklyChart"></canvas>
+          <canvas id="weeklyChart" class="chart weekly-chart"></canvas>
         </div>
       </div>
     </div>
 
-    <div class="col-md-6">
-      <div class="card">
+    <div class="col-md-6 chart-wrapper">
+      <div class="card chart-card">
         <div class="card-body">
           <h5 class="card-title">Reservations by Location</h5>
-          <canvas id="locationChart"></canvas>
+          <canvas id="locationChart" class="chart location-chart"></canvas>
         </div>
       </div>
     </div>
@@ -183,4 +178,3 @@
 </script>
 {% endif %}
 {% endblock %}
-    

@@ -1,34 +1,31 @@
 {% extends "./User/base_user.html" %}
 
-
 {% block title %} Login page {% endblock %}
 
-
 {% block body %}
-<div class="form-container mx-auto p-5 m-5" style="max-width:600px; text-align:center;">
-    <h2 style="color:rgba(0, 0, 0, 0.203);">Login</h2>
-    <form action="/login_user" method="POST">
-        <!-- <div class="login">
-            <h7> Email ID </h7>
-            <input type="email" name="email"><br>
-        </div> -->
-
+<div class="auth-form-container mx-auto p-5 m-5">
+    <div class="page-header admin-summary-header">
+        <h2 class="auth-form-title">Login</h2>
+    </div>
+    <form action="/login_user" method="POST" class="auth-form">
         {% if login_success1 %}
-        <div class="alert alert-danger" role="alert"> User not found </div>
+        <div class="form-alert alert alert-danger">User not found</div>
         {% endif %}
 
-        <div class="login">
-            <h7> Username </h7>
-            <input type="name" class="form-control" name="user_name"><br>
+        <div class="form-group">
+            <label for="user_name" class="form-label">Username</label>
+            <input type="text" id="user_name" class="form-control" name="user_name">
         </div>
 
-        <div class="login">
-            <h7> Password </h7>
-            <input type="password" class="form-control" name="pass_word"><br>
+        <div class="form-group">
+            <label for="pass_word" class="form-label">Password</label>
+            <input type="password" id="pass_word" class="form-control" name="pass_word">
         </div>
 
-        <button type="submit" class="btn btn-primary" style="padding:5px; width:100px;">Login</button><br>
-        <a href="/register_user" style="color: orangered; margin: 5px;">Register here!</a>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary form-button">Login</button><br><br>
+        </div>
+        <a href="/register_user" class="form-link">Register here!</a>
     </form>
 </div>
 {% endblock %}

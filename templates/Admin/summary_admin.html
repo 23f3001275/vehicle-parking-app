@@ -1,69 +1,68 @@
 {% extends "./Admin/base_admin.html" %}
 
 {% block head %}
-Summary
+  <title>Summary - Admin Dashboard</title>
 {% endblock %}
 
 {% block body %}
-<div class="page-header">
-    <h3>Admin Summary Dashboard</h3>
+<div class="page-header admin-summary-header">
+  <h3>Admin Summary Dashboard</h3>
 </div>
 
 <div class="lot-cards-container">
-    {% for lot in lots %}
-    <div class="card lot-card">
-        <div class="card-body">
-            <h5 class="card-title">{{ lot.name }}</h5>
-            <div class="lot-info-section">
-                <div class="lot-stats">
-                    <div class="lot-stat">
-                        <div class="lot-stat-label">Total Spots</div>
-                        <div class="lot-stat-value">{{ lot.total_spots }}</div>
-                    </div>
-                    <div class="lot-stat">
-                        <div class="lot-stat-label">Reserved</div>
-                        <div class="lot-stat-value">{{ lot.reserved_spots }}</div>
-                    </div>
-                    <div class="lot-stat">
-                        <div class="lot-stat-label">Available</div>
-                        <div class="lot-stat-value">{{ lot.available_spots }}</div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <canvas id="chart-{{ loop.index }}"></canvas>
-            </div>
+  {% for lot in lots %}
+  <div class="card lot-card summary-card">
+    <div class="card-body">
+      <h5 class="card-title">{{ lot.name }}</h5>
+      <div class="lot-info-section">
+        <div class="lot-stats">
+          <div class="lot-stat">
+            <div class="lot-stat-label">Total Spots</div>
+            <div class="lot-stat-value">{{ lot.total_spots }}</div>
+          </div>
+          <div class="lot-stat">
+            <div class="lot-stat-label">Reserved</div>
+            <div class="lot-stat-value">{{ lot.reserved_spots }}</div>
+          </div>
+          <div class="lot-stat">
+            <div class="lot-stat-label">Available</div>
+            <div class="lot-stat-value">{{ lot.available_spots }}</div>
+          </div>
         </div>
+      </div>
+      <div class="lot-chart">
+        <canvas id="chart-{{ loop.index }}" class="lot-chart-canvas"></canvas>
+      </div>
     </div>
-    {% endfor %}
+  </div>
+  {% endfor %}
 </div>
 
-<!-- Load Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    const lotData = {{ chart_data | safe }};
-    lotData.forEach((data, idx) => {
-        new Chart(document.getElementById('chart-' + (idx + 1)), {
-            type: 'bar',
-            data: {
-                labels: ['Reserved', 'Available'],
-                datasets: [{
-                    label: 'Spots',
-                    data: [data.reserved, data.available],
-                    backgroundColor: ['#6a0dad', '#ffcc00']
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { display: false },
-                    title: {
-                        display: true,
-                        text: 'Lot Stats'
-                    }
-                }
-            }
-        });
+  const lotData = {{ chart_data | safe }};
+  lotData.forEach((data, idx) => {
+    new Chart(document.getElementById('chart-' + (idx + 1)), {
+      type: 'bar',
+      data: {
+        labels: ['Reserved', 'Available'],
+        datasets: [{
+          label: 'Spots',
+          data: [data.reserved, data.available],
+          backgroundColor: ['#6a0dad', '#ffcc00']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Lot Stats'
+          }
+        }
+      }
     });
+  });
 </script>
 {% endblock %}

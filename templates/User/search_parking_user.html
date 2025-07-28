@@ -3,49 +3,46 @@
 {% block title %} Search Parking {% endblock %}
 
 {% block body %}
-
 <div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
-<form class="input-group" action="{{ url_for('searchParking', user_name=user_name, login_success=login_success) }}" method="POST">
-  <select class="form-select" name="lot_id" style="max-width: 200px;">
-    {% for lot in lots %}
-      <option value="{{ lot.id }}">{{ lot.prime_loc_name }} ({{ lot.address }})</option>
-    {% endfor %}
-  </select>
-  <input type="search" name="loc_name" class="form-control" placeholder="Enter location">
-  <button class="btn btn-warning" type="submit">Search</button>
-</form>
-
+      <form class="input-group search-form" action="{{ url_for('searchParking', user_name=user_name, login_success=login_success) }}" method="POST">
+        <select class="form-select" name="lot_id" style="max-width: 200px;">
+          {% for lot in lots %}
+          <option value="{{ lot.id }}">{{ lot.prime_loc_name }} ({{ lot.address }})</option>
+          {% endfor %}
+        </select>
+        <input type="search" name="loc_name" class="form-control" style="background-color: white;" placeholder="Enter location">
+        <button class="btn btn-warning" type="submit">Search</button>
+      </form>
     </div>
   </div>
 </div>
 
 {% if lot_data is not none %}
-  <div class="container">
-    <div class="row justify-content-center">
-      {% for lots in lot_data %}
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card text-center shadow">
-            <div class="card-body">
-              <h5 class="card-title">Location: {{ lots.prime_loc_name }}</h5>
-              <p class="card-text">Price (per spot per hr): ₹{{ lots.price }}</p>
-              <p class="card-text">Address: {{ lots.address }}</p>
-              <p class="card-text">Pincode: {{ lots.pincode }}</p>
+<div class="container">
+  <div class="row justify-content-center">
+    {% for lots in lot_data %}
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card text-center shadow">
+        <div class="card-body">
+          <h5 class="card-title">Location: {{ lots.prime_loc_name }}</h5>
+          <p class="card-text">Price (per spot per hr): ₹{{ lots.price }}</p>
+          <p class="card-text">Address: {{ lots.address }}</p>
+          <p class="card-text">Pincode: {{ lots.pincode }}</p>
 
-              {% if not full %}
-                <a href="{{ url_for('bookLotUser', user_name=user_name, login_success=login_success, lot_id=lots.id) }}" class="btn btn-success mt-2">Book</a>
-              {% else %}
-                <div class="alert alert-danger mt-3 p-2">
-                  <h6 class="mb-0">⚠️ LOT IS FULL</h6>
-                </div>
-              {% endif %}
-            </div>
+          {% if not full %}
+          <a href="{{ url_for('bookLotUser', user_name=user_name, login_success=login_success, lot_id=lots.id) }}" class="btn btn-success mt-2">Book</a>
+          {% else %}
+          <div class="alert alert-danger mt-3 p-2">
+            <h6 class="mb-0">⚠️ LOT IS FULL</h6>
           </div>
+          {% endif %}
         </div>
-      {% endfor %}
+      </div>
     </div>
+    {% endfor %}
   </div>
+</div>
 {% endif %}
-
 {% endblock %}

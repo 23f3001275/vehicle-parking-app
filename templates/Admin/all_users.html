@@ -1,46 +1,40 @@
 {% extends "./Admin/base_admin.html" %}
 
-{% block head %}
-Users | Admin
-{% endblock %}
+{% block head %}Users | Admin{% endblock %}
 
 {% block body %}
 <div class="card start-50 translate-middle-x m-5" style="width:80%; align-items:center;">
-      <div class="card-body">
-    <h3>Recent parking history</h3>
-    </div>
-</div>
-<div class="card text-center m-5">
-  <div class="card-body" >
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Username</th>
-      <th scope="col">Email</th>
-      <!-- <th scope="col">Password</th> -->
-      <th scope="col">Fullname</th>
-      <th scope="col">Address</th>
-      <th scope="col">Pincode</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for user in users %}
-    <tr>
-      <th scope="row">{{user.id}}</th>
-      <td>{{user.username}}</th>
-      <td>{{user.email}}</td>
-      <!-- <td>{{user.password}}</td> -->
-      <td>{{user.fullname}}</td>
-      <td>{{user.address}}</td>
-      <td>{{user.pincode}}</td>
-    </tr>
-    {% endfor %}
-    
-  </tbody>
-</table>
-    
+  <div class="page-header admin-summary-header">
+    <h3> All Users</h3>
   </div>
-  
+</div>
+
+<div class="card text-center m-5">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Fullname</th>
+          <th scope="col">Address</th>
+          <th scope="col">Pincode</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <th scope="row">{{ user.id }}</th>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.fullname }}</td>
+          <td>{{ user.address }}</td>
+          <td>{{ user.pincode }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
 {% endblock %}
