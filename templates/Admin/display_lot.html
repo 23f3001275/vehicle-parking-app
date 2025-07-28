@@ -12,9 +12,9 @@ Display lot
     <p class="card-text">Maximum Spots: {{ lot.max_spots }}</p>
     <p class="card-text">Address: {{ lot.address }}</p>
     <p class="card-text">Pincode: {{ lot.pincode }}</p>
-    <div class="flex-inline"><p class="card-text">Available:</p><div style="background-color: green; height: 20px; width: 20px;"></div></div>
-    <p class="card-text">Occupied:</p><div style="background-color: red; height: 20px; width: 20px;"></div>
-    <p class="card-text">Reserved:</p><div style="background-color: blue; height: 20px; width: 20px;"></div>
+    <div class="flex-inline"><p class="card-text">Available:</p><div style="background-color: green; border-radius: 5px; height: 20px; width: 20px;"></div></div>
+    <p class="card-text">Occupied:</p><div style="background-color: red; height: 20px; border-radius: 5px; width: 20px;"></div>
+    <p class="card-text">Reserved:</p><div style="background-color: blue; height: 20px;  border-radius: 5px; width: 20px;"></div>
     
     {% for item in lot_data %}
   <div class="d-flex flex-wrap " style="max-width: 400px;">

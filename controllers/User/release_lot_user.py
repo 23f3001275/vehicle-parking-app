@@ -12,7 +12,7 @@ def releaseLotUser(user_name, login_success,lot_id,spot_id):
     spot_id = int(spot_id)
     lot_id = int(lot_id)
     user=User.query.filter(User.username==user_name).first()
-    reservation=ReservedParkingSpot.query.filter(ReservedParkingSpot.user_id==user.id,ReservedParkingSpot.reserved_status==1,ReservedParkingSpot.spot_id==spot_id).first()
+    reservation=ReservedParkingSpot.query.filter(ReservedParkingSpot.user_id==user.id,ReservedParkingSpot.reserve_status==1,ReservedParkingSpot.spot_id==spot_id).first()
     lot=ParkingLot.query.filter(ParkingLot.id==lot_id).first()
     spot=ParkingSpot.query.filter(ParkingSpot.id==spot_id,ParkingSpot.status=="O").first()
     if request.method=="POST":
@@ -27,7 +27,7 @@ def releaseLotUser(user_name, login_success,lot_id,spot_id):
         price=((total_hours)*(lot.price))
         reservation.park_cost_per_unit_time=price
         spot.status="A"
-        reservation.reserved_status=False
+        reservation.reserve_status=False
         
         try:
             db.session.commit()

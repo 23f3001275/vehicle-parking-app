@@ -36,7 +36,7 @@
   </thead>
   <tbody>
     {% for item in all_user_data %}
-    {% if item.reserved_status and item.status=="R" %}
+    {% if item.reserve_status and item.status=="R" %}
     <tr>
       <th scope="row">{{loop.index}}</th>
       <td>{{item.prime_loc_name}}</td>
@@ -82,7 +82,7 @@
   </thead>
   <tbody>
     {% for item in all_user_data %}
-    {% if item.reserved_status and item.status=="O" %}
+    {% if item.reserve_status and item.status=="O" %}
     <tr>
       <th scope="row">{{loop.index}}</th>
       <td>{{item.prime_loc_name}}</td>
@@ -134,7 +134,7 @@
   </thead>
   <tbody>
     {% for item in all_user_data %}
-    {% if not item.reserved_status %}
+    {% if not item.reserve_status %}
     <tr>
       <th scope="row">{{ loop.index }}</th>
       <td>{{item.prime_loc_name}}</td>

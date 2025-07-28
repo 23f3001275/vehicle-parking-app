@@ -12,7 +12,7 @@ def bookLotUser(user_name, login_success,lot_id):
     user=User.query.filter(User.username==user_name).first()
     lot=ParkingLot.query.filter(ParkingLot.id==lot_id).first()
     active_reserved_ids = db.session.query(ReservedParkingSpot.spot_id).filter(
-    ReservedParkingSpot.reserved_status == True
+    ReservedParkingSpot.reserve_status == True
     ).all()
 
 
@@ -41,7 +41,7 @@ def bookLotUser(user_name, login_success,lot_id):
         reservation=ReservedParkingSpot(spot_id=spot.id,
                                         user_id=user.id,
                                         reserve_timestamp=datetime.now(),
-                                        reserved_status=True,
+                                        reserve_status=True,
                                         vehicle_no=vehicle_no,
                                         park_timestamp=park_timestamp,
                                         leave_timestamp=leave_timestamp)

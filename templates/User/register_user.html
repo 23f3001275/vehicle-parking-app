@@ -5,9 +5,9 @@
 
 
 {% block body %}
-<div class="border border-black mx-auto p-5 m-5" style="max-width:600px; text-align:center;">
+<div class="mx-auto p-5 m-5" style="max-width:600px; text-align:center;">
     <h2> User Signup </h2>
-    <form action="/register_user" method="POST" style="padding:10px;">
+    <form action="/register_user" method="POST" class="form-container" style="padding:10px;">
         <div class="register">
             <h7> Email ID </h7>
             <input type="email" class="form-control" name="email"><br>
@@ -38,7 +38,7 @@
             <input type="number" class="form-control" name="pincode"><br>
         </div>
 
-        <button type="submit" style="padding: 5px;width: 100px;background-color: aqua; margin: 10px;">Register</button><br>
+        <button type="submit" class="btn btn-primary" style="padding:5px; width:100px;">Register</button><br>
         <a href="/login_user" style="color: orangered; margin: 5px;">Login here!</a>
     </form>
 </div>

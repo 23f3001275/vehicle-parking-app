@@ -5,9 +5,9 @@
 
 
 {% block body %}
-<div class="border border-black mx-auto p-5 m-5" style="max-width:800px; text-align:center;">
+<div class="form-container mx-auto p-5 m-5" style="max-width:800px; text-align:center;">
     <h2 style="color:rgba(0, 0, 0, 0.203);"> Update Details</h2>
-    <form action="{{url_for('updateProfileUser', user_name=user_name, login_success=login_success)}}" method="POST">
+    <form action="{{url_for('editProfileUser', user_name=user_name, login_success=login_success)}}" method="POST">
 <div class="register">
             <h7> Email ID </h7>
             <input type="email" class="form-control" name="email" value="{{user.email}}"><br>
@@ -38,7 +38,7 @@
             <input type="number" class="form-control" name="pincode" value="{{user.pincode}}"><br>
         </div>
 
-        <button type="submit" style="padding:5px; width:200px;background-color: aqua; margin:10px;"> Save Changes </button><br>
+        <button type="submit" class="btn btn-primary" style="padding:5px; width:100px;"> Save Changes </button><br>
     </form>
 </div>
 {% endblock %}

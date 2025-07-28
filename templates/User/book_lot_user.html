@@ -1,9 +1,9 @@
 {% extends './User/base_user.html' %}
 {% block head %}Book Lot{% endblock %}
 {% block body %}
-<div class="border border-black mt-5 mx-auto m-5 p-5" style="max-width: 600px;text-align: center;">
+<div class="mt-5 mx-auto m-5 p-5 form-container" style="max-width: 600px;text-align: center;">
     <h2>Book lot</h2>
-    <form method="POST" action="{{url_for('book_lot_user',user_name=user_name,login_success=login_success,lot_id=lot.id)}}"  style="padding: 10px;">
+    <form method="POST" action="{{url_for('bookLotUser',user_name=user_name,login_success=login_success,lot_id=lot.id)}}"  style="padding: 10px;">
 
         <div class="reg">
             <h7>User ID</h7>
@@ -54,7 +54,7 @@
             <h7>If you don't mention, by default it will be considered as 11:79 p.m. of today</h7><br>
         </div>
 
-        <button type="submit" style="padding: 5px;width: 100px;background-color: aqua; margin: 10px;">Book</button><br>
+        <button type="submit" class="btn btn-primary" style="padding:5px; width:100px;">Book</button><br>
         
     </form>
 

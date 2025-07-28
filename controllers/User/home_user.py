@@ -26,13 +26,13 @@ def homeUser(user_name,login_success):
                     'leave_timestamp':reservation.leave_timestamp,
                     'status':str(spot.status),
                     'spot_id':spot.id,
-                    'reserved_status':reservation.reserved_status,
+                    'reserve_status':reservation.reserve_status,
                     'vehicle_no':reservation.vehicle_no,
                     'reserve_timestamp':reservation.reserve_timestamp,
                     'cost':reservation.park_cost_per_unit_time
                     
                 })
-        if reservation.reserved_status and datetime.now()>reservation.park_timestamp:
+        if reservation.reserve_status and datetime.now()>reservation.park_timestamp:
             spot.status="O"
                 
     try:

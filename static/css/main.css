@@ -1,40 +1,253 @@
-body{
-    text-align: center;
-}
-.content{
-    align-items: center;
-    text-align: center;
-}
-table{
-    align-items: center;
-    text-align: center; 
-}
-.reg{
-    margin:20px;
-    align-items: center;
-}
-.log{
-    margin:20px;
-    align-items: center;
+body {
+background: linear-gradient(135deg, #f3cfff, #fff176, #b388eb, #ffeb3b);
+background-size: 300% 300%;
+animation: gradientShift 15s ease infinite;
+font-family: 'Segoe UI', sans-serif;
+min-height: 100vh;
+margin: 0;
+padding: 0;
 }
 
-.fade-out {
-  animation: fadeOut 0.5s ease-in-out 2s forwards;
+/* Glassmorphism base styles */
+.card, .form-common, .form-container, .lot-card, .page-header {
+background: rgba(255, 255, 255, 0.25);
+border: 1px solid rgba(106, 13, 173, 0.3);
+border-radius: 15px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
 }
 
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-    max-height: 100px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-  100% {
-    opacity: 0;
-    max-height: 0;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    visibility: hidden;
-  }
+.card:hover {
+transform: scale(1.02);
+transition: transform 0.2s ease-in-out;
+}
+
+/* Text colors */
+.card-title, h3, h5, .form-common .form-label {
+color: #6a0dad;
+font-weight: 600;
+}
+
+.card-text {
+color: #333;
+}
+
+/* Form styling */
+.form-common {
+max-width: 600px;
+margin: 0 auto;
+padding: 2rem;
+}
+
+.form-common .form-control, .form-common .form-select {
+border: 1px solid #aaa;
+border-radius: 5px;
+padding: 0.75rem;
+margin-bottom: 1rem;
+transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-common .form-control:focus, .form-common .form-select:focus {
+border: 2px solid #6a0dad;
+box-shadow: 0 0 5px rgba(106, 13, 173, 0.3);
+outline: none;
+}
+
+/* Custom button classes - only for specific use cases */
+.add-lot-btn {
+background-color: #ffcc00;
+border-color: #ffcc00;
+color: #6a0dad;
+font-weight: 600;
+border-radius: 25px;
+padding: 0.75rem 1.5rem;
+transition: all 0.3s ease;
+}
+
+.add-lot-btn:hover {
+background-color: #ffd633;
+border-color: #ffd633;
+color: #4b0082;
+transform: translateY(-2px);
+box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.add-lot-floating {
+position: fixed;
+bottom: 2rem;
+right: 2rem;
+z-index: 1000;
+border-radius: 50px;
+padding: 1rem 2rem;
+box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* Lot cards */
+.lot-cards-container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 1rem;
+}
+
+.lot-card {
+transition: all 0.3s ease;
+margin-bottom: 2rem;
+height: 100%;
+}
+
+.lot-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 40px rgba(106, 13, 173, 0.2);
+}
+
+.lot-card .card-body {
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+padding: 1.5rem;
+}
+
+.lot-card .card-title {
+font-size: 1.25rem;
+margin-bottom: 1rem;
+text-align: center;
+}
+
+.lot-card .card-text {
+margin-bottom: 0.5rem;
+font-size: 0.95rem;
+}
+
+.lot-card .btn-group {
+margin: 1rem 0;
+display: flex;
+gap: 0.5rem;
+justify-content: center;
+}
+
+.lot-card .btn-group .btn {
+flex: 1;
+font-size: 0.85rem;
+padding: 0.5rem 1rem;
+}
+
+/* Lot sections */
+.lot-info-section {
+background: rgba(106, 13, 173, 0.05);
+border-radius: 8px;
+padding: 1rem;
+margin: 1rem 0;
+}
+
+.lot-stats {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 0.5rem;
+margin: 1rem 0;
+}
+
+.lot-stat {
+text-align: center;
+padding: 0.5rem;
+background: rgba(255, 255, 255, 0.2);
+border-radius: 8px;
+}
+
+.lot-stat-label {
+font-size: 0.8rem;
+color: #6a0dad;
+font-weight: 600;
+}
+
+.lot-stat-value {
+font-size: 1.1rem;
+font-weight: bold;
+color: #333;
+}
+
+/* Page header */
+.page-header {
+text-align: center;
+margin-bottom: 2rem;
+}
+
+.page-header h3 {
+margin: 0;
+padding: 1.5rem;
+}
+
+/* Table styling */
+.table {
+background: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(10px);
+border-radius: 15px;
+overflow: hidden;
+}
+
+.table th {
+background: rgba(106, 13, 173, 0.1);
+color: #6a0dad;
+font-weight: 600;
+border: none;
+}
+
+.table td {
+background: transparent;
+border: none;
+color: #333;
+}
+
+.table tbody tr {
+border-bottom: 1px solid rgba(106, 13, 173, 0.1);
+}
+
+/* Legacy form support */
+form:not(.form-common) {
+max-width: 600px;
+margin: auto;
+background: rgba(255, 255, 255, 0.15);
+padding: 30px;
+border-radius: 15px;
+border: 1px solid rgba(106, 13, 173, 0.3);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+form:not(.form-common) label {
+font-weight: 600;
+color: #6a0dad;
+}
+
+form:not(.form-common) input, form:not(.form-common) textarea, form:not(.form-common) select {
+width: 100%;
+padding: 10px;
+border: 1px solid #aaa;
+border-radius: 5px;
+margin: 5px 0 15px 0;
+box-sizing: border-box;
+}
+
+form:not(.form-common) input:focus, form:not(.form-common) select:focus, form:not(.form-common) textarea:focus {
+border: 2px solid #6a0dad;
+outline: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+.lot-card {
+margin-bottom: 1.5rem;
+}
+
+.lot-stats {
+grid-template-columns: 1fr;
+gap: 0.25rem;
+}
+
+.add-lot-floating {
+bottom: 1rem;
+right: 1rem;
+padding: 0.8rem 1.5rem;
+}
 }

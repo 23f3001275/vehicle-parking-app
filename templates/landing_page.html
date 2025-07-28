@@ -1,37 +1,43 @@
 {% extends 'base.html' %}
 
-{% block title %} 
+{% block title %}
 Welcome to VPL
 {% endblock %}
 
 {% block body %}
+<!-- Gradient background is set in your CSS -->
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <!-- {% if login_success %}
-    <a class="navbar-brand">Welcome, {{ user_name }}</a>
-    {% endif %} -->
- 
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-        <li class="nav-item">
-          <a class="btn btn-primary" aria-current="page" href="/login_user">Login as User</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link"> | </a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-outline-info" href="/register_user">Register as User</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link"> | </a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-success" href="/login_admin">Login as Admin</a>
-        </li>
-      </ul>
-    </div>
+<div class="page-header" style="margin-top:4rem;">
+  <h3>
+    <span style="color:#b388eb;font-weight:700;">VPL</span>&nbsp; 
+    <span style="font-weight:400;">– Your Vehicle Parking & Rental Hub</span>
+  </h3>
+  <p style="max-width:520px;margin:0 auto 1.5rem auto;color:#6a0dad;font-size:1.15rem;letter-spacing:0.2px;">
+    Book, rent, or list your parking spots and vehicles with the ease of one hub. 
+    <br>
+    <span style="color:#333;font-size:1rem;">Simple, secure, and transparent for every user.</span>
+  </p>
+</div>
+
+<div class="card" style="max-width:410px;margin:3rem auto 1.5rem auto;padding:2.7rem 2.1rem 2rem 2.1rem;">
+  <div style="text-align:center;margin-bottom:1.35rem;">
   </div>
-</nav>
+  <h3 class="card-title" style="text-align:center;margin-bottom:0.5rem;">Get Started</h3>
+  <p class="card-text" style="text-align:center;margin-bottom:1.7rem;color:#6a0dad;">
+    Choose your role to book, list, or manage parking and vehicles.
+  </p>
+  <div class="btn-group" style="display:flex;justify-content:center;gap:0.9rem;margin-top:.5rem;">
+    <a class="add-lot-btn" style="min-width:108px;box-shadow:0 2px 12px rgba(106,13,173,0.09);" href="/login_user">Login as User</a>
+    <a class="add-lot-btn" style="background:#fff176;color:#6a0dad;min-width:112px;" href="/register_user">Register as User</a>
+    <a class="add-lot-btn" style="background:#b388eb;color:#fff;min-width:108px;" href="/login_admin">Login as Admin</a>
+  </div>
+</div>
+
+<div style="text-align:center;margin-top:2.8rem;">
+  <span style="color:#aaa;font-size:1.05rem;">Don't have an account yet?</span><br>
+  <a href="/register_user" class="add-lot-btn add-lot-floating" title="Quick User Registration" style="font-size:1.11rem;letter-spacing:.8px;">
+    Register Now
+  </a>
+</div>
 
 {% endblock %}

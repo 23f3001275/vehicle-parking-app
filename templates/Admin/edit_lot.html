@@ -3,7 +3,7 @@
 {% block title %} Edit Lot {% endblock %}
 
 {% block body %}
-<div class="border border-black mx-auto p-5 m-5" style="max-width:800px; text-align:center;">
+<div class="mx-auto p-5 m-5 form-container" style="max-width:800px; text-align:center;">
     <h2 style="color:rgba(0, 0, 0, 0.6);"> Update Parking Lot Details </h2>
     
     <form action="{{ url_for('editLot', admin_name=admin_name, login_success=login_success, lot_id=lot.id) }}" method="POST">
@@ -32,7 +32,7 @@
             <input type="number" class="form-control" name="pincode" value="{{ lot.pincode }}"><br>
         </div>
 
-        <button type="submit" style="padding:5px; width:200px; background-color: aqua; margin:10px;"> Save Changes </button><br>
+        <button type="submit" class="btn btn-warning" style="padding:5px; width:200px; background-color: aqua; margin:10px;"> Save Changes </button><br>
     </form>
 </div>
 {% endblock %}

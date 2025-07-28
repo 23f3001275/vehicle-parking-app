@@ -1,11 +1,14 @@
 from flask import render_template,request,redirect,url_for
 from create_app import app
 from extensions import db
+from models.admin import Admin
 from models.parking_lot import ParkingLot
 from models.parking_spot import ParkingSpot
 
 @app.route("/add_lot_admin/<admin_name>/<login_success>", methods=["POST","GET"])
 def addLotAdmin(admin_name, login_success):
+    admin = Admin.query.filter_by(username=admin_name).first_or_404()
+
     if request.method == 'POST':
         lot_loc_name = request.form['location_name']
         lot_price = request.form['price']
@@ -17,14 +20,15 @@ def addLotAdmin(admin_name, login_success):
                              price = lot_price, 
                              address = lot_address, 
                              pincode = lot_pincode, 
-                             max_spots = lot_max_spots)
+                             max_spots = lot_max_spots,
+                             admin_id=admin.id)
         
         try:
             db.session.add(new_lot)
             db.session.commit()
 
             for i in range(new_lot.max_spots):
-                new_spot = ParkingSpot(status=False, lot_id=new_lot.id)
+                new_spot = ParkingSpot(lot_id=new_lot.id)
                 db.session.add(new_spot)
             db.session.commit()
 

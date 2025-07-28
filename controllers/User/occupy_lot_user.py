@@ -26,7 +26,7 @@ def occupyLotUser(user_name, login_success,lot_id,spot_id):
         reservation=ReservedParkingSpot(spot_id=spot.id,
                                         user_id=user.id,
                                         reserve_timestamp=datetime.now(),
-                                        reserved_status=True,
+                                        reserve_status=True,
                                         vehicle_no=vehicle_no,
                                         park_timestamp=park_timestamp,
                                         leave_timestamp=leave_timestamp)

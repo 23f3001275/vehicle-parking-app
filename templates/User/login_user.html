@@ -5,7 +5,7 @@
 
 
 {% block body %}
-<div class="border border-black mx-auto p-5 m-5" style="max-width:600px; text-align:center;">
+<div class="form-container mx-auto p-5 m-5" style="max-width:600px; text-align:center;">
     <h2 style="color:rgba(0, 0, 0, 0.203);">Login</h2>
     <form action="/login_user" method="POST">
         <!-- <div class="login">
@@ -27,7 +27,7 @@
             <input type="password" class="form-control" name="pass_word"><br>
         </div>
 
-        <button type="submit" style="padding:5px; width:100px;background-color: aqua; margin:10px;">Login</button><br>
+        <button type="submit" class="btn btn-primary" style="padding:5px; width:100px;">Login</button><br>
         <a href="/register_user" style="color: orangered; margin: 5px;">Register here!</a>
     </form>
 </div>
