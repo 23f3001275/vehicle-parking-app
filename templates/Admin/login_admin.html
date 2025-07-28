@@ -6,15 +6,16 @@
 
 {% block body %}
 <div class="auth-form-container">
-    <div class="page-header admin-summary-header">
-        <h2 class="auth-form-title">Login</h2>
-    </div>
 
     <form action="/login_admin" method="POST" class="auth-form">
         
         {% if login_success1 %}
         <div class="form-alert alert alert-danger">Admin not found</div>
         {% endif %}
+        
+    <div class="page-header admin-summary-header">
+        <h2 class="title">Login for admin</h2>
+    </div>
 
         <div class="form-group">
             <label for="user_name" class="form-label">Username</label>

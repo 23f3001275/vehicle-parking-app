@@ -4,9 +4,9 @@
 
 {% block body %}
 <div class="main-form-container mx-auto p-5 m-5">
-    <div class="page-header admin-summary-header">
-        <h2 class="main-form-title">Book Lot</h2>
-    </div>
+<div class="card m-5 mx-auto text-center" style="width: 80%;">
+  <h3 class="my-3">Book Lot</h3>
+</div>
     <form method="POST" action="{{ url_for('bookLotUser', user_name=user_name, login_success=login_success, lot_id=lot.id) }}" class="main-form">
 
         <div class="form-group">
@@ -45,20 +45,14 @@
         </div>
 
         <div class="form-group">
-            <label for="vehicle_no" class="form-label">Vehicle No</label>
-            <input type="text" class="form-control" name="vehicle_no" placeholder="Enter in caps">
+            <label for="vehicle_no" class="form-label" >Vehicle No</label>
+            <input type="text" class="form-control"  name="vehicle_no" placeholder="Enter in caps">
         </div>
 
         <div class="form-group">
             <label for="park_timestamp" class="form-label">Time for Booking</label>
             <input type="datetime-local" class="form-control" name="park_timestamp">
-        </div>
-
-        <div class="form-group">
-            <label for="leave_timestamp" class="form-label">Leaving Time (Optional)</label>
-            <input type="datetime-local" class="form-control" name="leave_timestamp">
-            <small class="text-muted">If you don't mention, it will default to 11:59 PM today.</small>
-        </div>
+        </div>  
         
         <div class="text-center">
             <button type="submit" class="btn btn-primary form-button">Book</button>

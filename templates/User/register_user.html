@@ -3,11 +3,12 @@
 {% block title %} Register page {% endblock %}
 
 {% block body %}
-<div class="auth-form-container mx-auto p-5 m-5">
-    <div class="page-header admin-summary-header">
-        <h2 class="auth-form-title">User Signup</h2>
-    </div>
+<div class="auth-form-container mx-auto p-5">
     <form action="/register_user" method="POST" class="auth-form">
+
+                    <div class="page-header admin-summary-header">
+        <h2 class="title">Register</h2>
+    </div>
 
         <div class="form-group">
             <label for="email" class="form-label">Email ID</label>
@@ -40,9 +41,10 @@
         </div>
 
         <div class="text-center">
-          <button type="submit" class="btn btn-primary form-button">Register</button><br><br>
+          <button type="submit" class="btn btn-primary form-button">Register</button>
+           <a href="/login_user" class="form-link">Login here!</a>
         </div>
-        <a href="/login_user" class="form-link">Login here!</a>
+       
     </form>
 </div>
 {% endblock %}

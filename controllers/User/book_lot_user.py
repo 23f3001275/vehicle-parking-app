@@ -30,24 +30,18 @@ def bookLotUser(user_name, login_success,lot_id):
         vehicle_no=request.form['vehicle_no']
         park_timestamp_str=request.form['park_timestamp']
         park_timestamp = datetime.strptime(park_timestamp_str, '%Y-%m-%dT%H:%M')
-        lt=request.form['leave_timestamp']
-        if not lt:
-            leave_timestamp=None
-        else:
-            leave_timestamp=lt
-        
-        spot.status="R"
-
-        reservation=ReservedParkingSpot(spot_id=spot.id,
-                                        user_id=user.id,
-                                        reserve_timestamp=datetime.now(),
-                                        reserve_status=True,
-                                        vehicle_no=vehicle_no,
-                                        park_timestamp=park_timestamp,
-                                        leave_timestamp=leave_timestamp)
-        
-                 
+        leave_timestamp = None;
         try:
+            spot.status="R"
+
+            reservation=ReservedParkingSpot(spot_id=spot.id,
+                                            user_id=user.id,
+                                            reserve_timestamp=datetime.now(),
+                                            reserve_status=True,
+                                            vehicle_no=vehicle_no,
+                                            park_timestamp=park_timestamp,
+                                            leave_timestamp=leave_timestamp)
+        
             db.session.add(reservation)
             db.session.commit()
             return redirect(url_for('homeUser',user_name=user_name,login_success=login_success))

@@ -20,13 +20,13 @@
     {% for item in lot_data %}
     <div class="d-flex flex-wrap" style="max-width: 400px;">
       {% for i in range(item.occupied) %}
-        <div class="card m-1" style="background-color: red; height: 20px; width: 20px;"></div>
+        <div class="card-item m-1" style="background-color: red; height: 20px; width: 20px; border-radius: 3px;"></div>
       {% endfor %}
       {% for i in range(item.available) %}
-        <div class="card m-1" style="background-color: green; height: 20px; width: 20px;"></div>
+        <div class="card-item m-1" style="background-color: green; height: 20px; width: 20px; border-radius: 3px;"></div>
       {% endfor %}
       {% for i in range(item.reserved) %}
-        <div class="card m-1" style="background-color: blue; height: 20px; width: 20px;"></div>
+        <div class="card-item m-1" style="background-color: blue; height: 20px; width: 20px; border-radius: 3px;"></div>
       {% endfor %}
     </div>
     {% endfor %}

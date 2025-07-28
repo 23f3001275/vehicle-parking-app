@@ -3,14 +3,16 @@
 {% block title %} Login page {% endblock %}
 
 {% block body %}
-<div class="auth-form-container mx-auto p-5 m-5">
-    <div class="page-header admin-summary-header">
-        <h2 class="auth-form-title">Login</h2>
-    </div>
+<div class="auth-form-container mx-auto p-5">
+
     <form action="/login_user" method="POST" class="auth-form">
         {% if login_success1 %}
         <div class="form-alert alert alert-danger">User not found</div>
         {% endif %}
+
+    <div class="page-header admin-summary-header">
+        <h2 class="title">Login</h2>
+    </div>
 
         <div class="form-group">
             <label for="user_name" class="form-label">Username</label>
@@ -24,8 +26,9 @@
 
         <div class="text-center">
             <button type="submit" class="btn btn-primary form-button">Login</button><br><br>
+            <a href="/register_user" class="form-link">Register here!</a>
         </div>
-        <a href="/register_user" class="form-link">Register here!</a>
+        
     </form>
 </div>
 {% endblock %}

@@ -6,9 +6,9 @@
 
 {% block body %}
 <div class="main-form-container">
-    <div class="page-header admin-summary-header">
-        <h2 class="main-form-title">Add a Lot</h2>
-    </div>
+<div class="card m-5 mx-auto text-center" style="width: 80%;">
+  <h3 class="my-3">Add Lot</h3>
+</div>
     <form action="{{ url_for('addLotAdmin', admin_name=admin_name, login_success=login_success) }}" method="POST" class="main-form">
         <div class="form-group">
             <label for="location_name" class="form-label">Location Name</label>

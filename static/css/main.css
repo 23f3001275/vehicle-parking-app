@@ -83,7 +83,7 @@ form .form-control:focus {
 .stat-card, .lot-stat {
     text-align: center;
     padding: 1rem;
-    background-color: rgba(0, 255, 255, 0.05); /* optional: subtle bg */
+    background-color: rgba(7, 57, 57, 0.05); /* optional: subtle bg */
     border: 1px solid rgba(0, 255, 255, 0.2);
     border-radius: 0.5rem;
 }
@@ -98,7 +98,7 @@ form .form-control:focus {
 .stat-value, .lot-stat-value {
     font-size: 1.3rem;
     font-weight: bold;
-    color: #6effa3;
+    color: #184586;
 }
 
 /* Navbar Styling */
@@ -108,10 +108,15 @@ nav {
 }
 
 .navbar {
-    background-color: #bef5ff !important;
-    padding: 1rem 0;
-
+  background: linear-gradient(135deg, #00f0ff, #00ff88);
+  animation: gradientShift 15s ease infinite;
+  /* background: linear-gradient(to bottom, rgba(190, 245, 255, 1), rgba(190, 245, 255, 0)); */
+  padding: 1rem 0;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: blur(8px); /* optional glass effect */
 }
+
 
 .navbar .navbar-brand {
     color: #2c3e50 !important;
@@ -197,8 +202,43 @@ nav {
     border-radius: 50px !important;
 }
 
-.table-header{
-    background-color: #6effa3;
+.title{
+    color: #bef5ff;
+}
+
+.table {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px !important;
+  overflow: hidden;
+}
+
+.table th {
+  background: rgba(32, 178, 204, 0.1) !important; /* light cyan-tint */
+  color: #20b2cc !important;  /* turquoise */
+  font-weight: 600;
+  border: none !important;
+}
+
+.table td {
+  background: transparent !important;
+  border: none !important;
+  color: #2c3e50; /* dark navy */
+}
+
+.table tbody tr {
+  border-bottom: 1px solid rgba(32, 178, 204, 0.15) !important;
+}
+
+.table .btn {
+  border: none !important;
+  box-shadow: none !important;
+  color: #2c3e50;
+}
+
+.table .btn:focus {
+  box-shadow: 0 0 5px rgba(32, 178, 204, 0.3) !important;
 }
 
 /* Responsive Design */
@@ -215,4 +255,22 @@ nav {
         bottom: 1rem;
         right: 1rem;
     }
+}
+
+/* Glassmorphism */
+.card {
+  background: rgba(255, 255, 255, 0.5) !important;  /* more white */
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-radius: 1rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05) !important;
+  color: #2f2f2f;
+}
+
+
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
