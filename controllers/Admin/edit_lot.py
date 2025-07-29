@@ -1,4 +1,4 @@
-from flask import render_template,request,redirect,url_for
+from flask import render_template,request,redirect,url_for,flash
 from create_app import app
 from extensions import db
 from models.parking_lot import ParkingLot
@@ -29,7 +29,9 @@ def editLot(admin_name,login_success,lot_id):
        
         try:
             db.session.commit()
+            flash("Lot info successfully edited","info")
             return redirect(url_for('homeAdmin',admin_name=admin_name,login_success=login_success))
         except:
-            return "there was problem editing the lot"   
+            flash("there was problem editing the lot")
+            return render_template('Admin/edit_lot.html',login_success=login_success,admin_name=admin_name,lot=lot)
     return render_template('Admin/edit_lot.html',login_success=login_success,admin_name=admin_name,lot=lot)

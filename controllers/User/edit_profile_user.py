@@ -1,4 +1,4 @@
-from flask import render_template,request,redirect,url_for
+from flask import render_template,request,redirect,url_for,flash
 from create_app import app
 from extensions import db
 from models.user import User
@@ -16,7 +16,9 @@ def editProfileUser(user_name,login_success):
 
         try:
             db.session.commit()
+            flash("Updated successfully")
             return redirect(url_for('homeUser',user_name=user.username,login_success=True))
         except:
-            return "there was problem registering you"  
+            flash("There was problem editing your profile") 
+            return render_template('User/edit_profile_user.html',user=user,login_success=login_success,user_name=user_name)
     return render_template('User/edit_profile_user.html',user=user,login_success=login_success,user_name=user_name)

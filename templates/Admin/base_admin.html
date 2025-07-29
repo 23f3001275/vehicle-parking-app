@@ -15,32 +15,36 @@
   <div class="container-fluid">
     {% if login_success %}
       <!-- Left: Welcome message -->
-      <a class="navbar-brand">Welcome, {{ admin_name }}</a>
+      <a class="navbar-brand d-flex align-items-center" href="{{url_for('homeAdmin', admin_name=admin_name, login_success=login_success)}}">
+        <img src="{{ url_for('static', filename='images/user.png') }}" alt="User Icon" class="user-png me-2">
+          Welcome, {{ admin_name }}
+      </a>
       
       <!-- Center: Navigation links -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="{{ url_for('homeAdmin', admin_name=admin_name, login_success=login_success) }}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link separator">|</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('allUsers', admin_name=admin_name, login_success=login_success) }}">Users</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link separator">|</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('summaryAdmin', admin_name=admin_name, login_success=login_success) }}">Summary</a>
-          </li>
-        </ul>
-      </div>
+  <ul class="navbar-nav mx-auto">
+    <li class="nav-item">
+      <a class="nav-link {% if request.endpoint == 'homeAdmin' %}active{% endif %}" href="{{ url_for('homeAdmin', admin_name=admin_name, login_success=login_success) }}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link separator">|</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link {% if request.endpoint == 'allUsers' %}active{% endif %}" href="{{ url_for('allUsers', admin_name=admin_name, login_success=login_success) }}">Users</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link separator">|</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link {% if request.endpoint == 'summaryAdmin' %}active{% endif %}" href="{{ url_for('summaryAdmin', admin_name=admin_name, login_success=login_success) }}">Summary</a>
+    </li>
+  </ul>
+</div>
+
       
       <!-- Right: Edit Profile and Logout -->
       <div class="navbar-right">
-        <a href="/" class="btn btn-outline-danger btn-sm">Logout</a>
+        <a href="/" class="btn btn-outline-dark btn-sm">Logout</a>
       </div>
       
     {% else %}

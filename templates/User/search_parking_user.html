@@ -27,9 +27,9 @@
 
 {% if lot_data is not none %}
   {% if lot_data_1 %}
-  {% for item in lot_data_1 %}
     <div class="container">
       <div class="row justify-content-center">
+        {% for item in lot_data_1 %}
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card text-center shadow">
             <div class="card-body">
@@ -47,10 +47,9 @@
             </div>
           </div>
         </div>
-      
+        {% endfor %}
       </div>
     </div>
-  {% endfor %}
   {%else%}
   <div class="alert alert-danger m-5 p-2 text-center " >
   <h6 class="mb-0">No matching results found</h6>

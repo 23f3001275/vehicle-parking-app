@@ -32,7 +32,7 @@ def addLotAdmin(admin_name, login_success):
                 db.session.add(new_spot)
             db.session.commit()
 
-
+            flash("Lot is added","info")
             url = url_for('homeAdmin', admin_name=admin_name, login_success=login_success)
             return redirect(url)
         except:

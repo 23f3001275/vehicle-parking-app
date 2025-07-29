@@ -1,40 +1,40 @@
-{% extends 'base.html' %}
+  {% extends 'base.html' %}
 
-{% block title %}
-Welcome to VPL
-{% endblock %}
+  {% block title %}
+  Welcome to VPL
+  {% endblock %}
 
-{% block body %}
-<div class="container py-5 d-flex flex-column align-items-center justify-content-center">
-  
-  <!-- Header Section -->
-  <div class="card w-100 text-center mb-4 p-4 shadow-sm" style="max-width: 900px;">
-    <h3>
-      <span class="brand-primary">VPL</span>
-      <span class="subheading">- Your Vehicle Parking & Rental Hub</span>
-    </h3>
-    <p class="tagline">
-      Book, rent, or list your parking spots and vehicles with ease. <br>
-      <span class="text-muted">Simple, secure, and transparent for every user.</span>
-    </p>
-  </div>
-
-  <!-- Get Started Section -->
-  <div class="card w-100 text-center mb-4 p-4 shadow-sm" style="max-width: 700px;">
-    <h3 class="mb-3">Get Started</h3>
-    <p>Choose your role to book, list, or manage parking and vehicles.</p>
-    <div class="d-flex flex-wrap justify-content-center gap-3 mt-3">
-      <a class="btn btn-primary" href="/login_user">Login as User</a>
-      <a class="btn btn-primary" href="/register_user">Register as User</a>
-      <a class="btn btn-primary" href="/login_admin">Login as Admin</a>
+  {% block body %}
+  <div class="container py-5 d-flex flex-column align-items-center justify-content-center">
+    
+    <!-- Header Section -->
+    <div class="card w-100 text-center mb-4 p-4 shadow-sm" style="max-width: 900px;">
+      <h3>
+        <span class="brand-primary">VPL</span>
+        <span class="subheading">- Your Vehicle Parking & Rental Hub</span>
+      </h3>
+      <p class="tagline">
+        Book, rent, or list your parking spots and vehicles with ease. <br>
+        <span class="text-muted">Simple, secure, and transparent for every user.</span>
+      </p>
     </div>
-  </div>
 
-  <!-- Register Prompt -->
-  <div class="text-center mt-2">
-    <p>Don't have an account yet?</p>
-    <a href="/register_user" class="btn btn-warning">Register Now</a>
-  </div>
+    <!-- Get Started Section -->
+    <div class="card w-100 text-center mb-4 p-4 shadow-sm" style="max-width: 700px;">
+      <h3 class="mb-3">Get Started</h3>
+      <p>Choose your role to book, list, or manage parking and vehicles.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-3 mt-3">
+        <a class="btn btn-primary" href="/login_user">Login as User</a>
+        <!-- <a class="btn btn-primary" href="/register_user">Register as User</a> -->
+        <a class="btn btn-primary" href="/login_admin">Login as Admin</a>
+      </div>
+    </div>
 
-</div>
-{% endblock %}
+    <!-- Register Prompt -->
+    <div class="text-center mt-2">
+      <p>Don't have an account yet?</p>
+      <a href="/register_user" class="btn btn-warning">Register Now</a>
+    </div>
+
+  </div>
+  {% endblock %}

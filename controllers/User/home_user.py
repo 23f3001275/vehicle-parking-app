@@ -22,7 +22,7 @@ def homeUser(user_name,login_success):
                     'lot_id':lot.id,
                     'price': lot.price,
                     'park_timestamp':reservation.park_timestamp.strftime('%Y-%m-%d %H:%M'),
-                    'leave_timestamp':reservation.leave_timestamp.strftime('%Y-%m-%d %H:%M'),
+                    'leave_timestamp':reservation.leave_timestamp.strftime('%Y-%m-%d %H:%M') if reservation.leave_timestamp else None,
                     'status':str(spot.status),
                     'spot_id':spot.id,
                     'reserve_status':reservation.reserve_status,

@@ -3,6 +3,13 @@
 {% block title %} Edit Lot {% endblock %}
 
 {% block body %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-danger fade-out" role="alert">
+      {{ messages[0] }}
+    </div>
+  {% endif %}
+{% endwith %}
 <div class="main-form-container">
 <div class="card m-5 mx-auto text-center" style="width: 80%;">
   <h3 class="my-3">Update Parking Lot Details</h3>

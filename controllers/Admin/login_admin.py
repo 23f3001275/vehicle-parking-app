@@ -12,8 +12,8 @@ def loginAdmin():
         admin=Admin.query.filter(Admin.username==admin_user_name,Admin.password==admin_pass_word).first()
 
         if admin:
-            flash("You are now logged in")
             url = url_for('homeAdmin', admin_name=admin.username, login_success=True)
+            flash("You are now logged in",'success')
             return redirect(url)
         else:
             flash("Admin not found")
