@@ -3,8 +3,8 @@
 {% block head %} Book Lot {% endblock %}
 
 {% block body %}
-<div class="main-form-container mx-auto p-5 m-5">
-<div class="card m-5 mx-auto text-center" style="width: 80%;">
+<div class="main-form-container mx-auto p-5 m-2">
+<div class="card mx-auto text-center" style="width: 80%;">
   <h3 class="my-3">Book Lot</h3>
 </div>
     <form method="POST" action="{{ url_for('bookLotUser', user_name=user_name, login_success=login_success, lot_id=lot.id) }}" class="main-form">
@@ -56,8 +56,7 @@
         
         <div class="text-center">
             <button type="submit" class="btn btn-primary form-button">Book</button>
-        </div>
-        
+        </div> 
     </form>
 </div>
 {% endblock %}

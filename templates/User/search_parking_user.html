@@ -13,11 +13,12 @@
     <div class="col-md-8">
       <form class="input-group search-form" action="{{ url_for('searchParking', user_name=user_name, login_success=login_success) }}" method="POST">
         <select class="form-select" name="lot_id" style="max-width: 200px;">
+          <option value="">-- Select Location --</option>
           {% for lot in lots %}
-          <option value="{{ lot.id }}">{{ lot.prime_loc_name }} ({{ lot.address }})</option>
+          <option value="{{ lot.id }}"> {{ lot.prime_loc_name }} ({{ lot.address }}) </option>
           {% endfor %}
         </select>
-        <input type="search" name="loc_name" class="form-control" style="background-color: white;" placeholder="Enter location">
+        <input type="search" name="loc_name" class="form-control" style="background-color: white;color:black" placeholder="Enter location">
         <button class="btn btn-warning" type="submit">Search</button>
       </form>
     </div>
@@ -25,29 +26,46 @@
 </div>
 
 {% if lot_data is not none %}
-<div class="container">
-  <div class="row justify-content-center">
-    {% for lots in lot_data %}
-    <div class="col-md-6 col-lg-4 mb-4">
-      <div class="card text-center shadow">
-        <div class="card-body">
-          <h5 class="card-title">Location: {{ lots.prime_loc_name }}</h5>
-          <p class="card-text">Price (per spot per hr): ₹{{ lots.price }}</p>
-          <p class="card-text">Address: {{ lots.address }}</p>
-          <p class="card-text">Pincode: {{ lots.pincode }}</p>
-
-          {% if not full %}
-          <a href="{{ url_for('bookLotUser', user_name=user_name, login_success=login_success, lot_id=lots.id) }}" class="btn btn-success mt-2">Book</a>
-          {% else %}
-          <div class="alert alert-danger mt-3 p-2">
-            <h6 class="mb-0">⚠️ LOT IS FULL</h6>
+  {% if lot_data_1 %}
+  {% for item in lot_data_1 %}
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card text-center shadow">
+            <div class="card-body">
+              <h5 class="card-title">Location: {{ item.lot.prime_loc_name }}</h5>
+              <p class="card-text">Price (per spot per hr): ₹{{ item.lot.price }}</p>
+              <p class="card-text">Address: {{ item.lot.address }}</p>
+              <p class="card-text">Pincode: {{ item.lot.pincode }}</p>
+              {% if not item.full %}
+              <a href="{{ url_for('bookLotUser', user_name=user_name, login_success=login_success, lot_id=item.lot.id )}}" class="btn btn-success mt-2">Book</a>
+              {% else %}
+              <div class="alert alert-danger mt-3 p-2">
+                <h6 class="mb-0">⚠️ LOT IS FULL</h6>
+              </div>
+              {% endif %}
+            </div>
           </div>
-          {% endif %}
         </div>
+      
       </div>
     </div>
-    {% endfor %}
-  </div>
+  {% endfor %}
+  {%else%}
+  <div class="alert alert-danger m-5 p-2 text-center " >
+  <h6 class="mb-0">No matching results found</h6>
 </div>
+{%endif%}
+{% else %}
+<div class="card m-5 p-4 text-center">
+  <div class="d-flex align-items-center justify-content-center mb-3" style="font-size: 2rem; color: #2c3e50;">
+    <i class="bi bi-binoculars"></i> <!-- Bootstrap Icon -->
+  </div>
+  <h5 class="mb-2">Begin your search for a parking lot</h5>
+</div>
+
+
+
 {% endif %}
+
 {% endblock %}
