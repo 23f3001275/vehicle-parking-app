@@ -4,6 +4,13 @@
 
 {% block body %}
 <div class="auth-form-container mx-auto p-5">
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-danger fade-out" role="alert">
+      {{ messages[0] }}
+    </div>
+  {% endif %}
+{% endwith %}
     <form action="/register_user" method="POST" class="auth-form">
 
                     <div class="page-header admin-summary-header">

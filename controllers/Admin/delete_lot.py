@@ -1,4 +1,4 @@
-from flask import render_template,request,redirect,url_for
+from flask import render_template,request,redirect,url_for, flash
 from create_app import app
 from extensions import db
 from models.parking_lot import ParkingLot
@@ -14,8 +14,9 @@ def deleteLot(admin_name,login_success,lot_id):
             db.session.commit()
             return redirect(url_for('homeAdmin',admin_name=admin_name,login_success=login_success))
         except:
-            return "there was problem deleting the lot"  
+            flash("There was an error in deleting lot")  
     else:
-        return "there are some booked spots"
+        flash("Lot is not empty")
+        return redirect(url_for('homeAdmin',admin_name=admin_name,login_success=login_success))
     
-    return redirect(url_for('home_admin',admin_name=admin_name,login_success=login_success))
+    return redirect(url_for('homeAdmin',admin_name=admin_name,login_success=login_success))

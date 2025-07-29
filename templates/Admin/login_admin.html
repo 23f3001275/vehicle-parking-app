@@ -7,6 +7,14 @@
 {% block body %}
 <div class="auth-form-container">
 
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-success fade-out" role="alert">
+      {{ messages[0] }}
+    </div>
+  {% endif %}
+{% endwith %}
+
     <form action="/login_admin" method="POST" class="auth-form">
         
         {% if login_success1 %}

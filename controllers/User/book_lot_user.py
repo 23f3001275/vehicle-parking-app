@@ -1,4 +1,4 @@
-from flask import render_template,request,redirect,url_for
+from flask import render_template,request,redirect,url_for, flash
 from create_app import app
 from extensions import db
 from models.user import User
@@ -45,7 +45,8 @@ def bookLotUser(user_name, login_success,lot_id):
             db.session.add(reservation)
             db.session.commit()
             return redirect(url_for('homeUser',user_name=user_name,login_success=login_success))
-        except:
-            pass
+        except Exception as e:
+            db.session.rollback()  # Roll back in case of failure
+            flash(f'There was an error booking the lot: {str(e)}', 'danger')
     
     return render_template('User/book_lot_user.html',user_name=user_name, login_success=login_success,lot=lot,user=user,spot=spot) 

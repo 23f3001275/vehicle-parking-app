@@ -1,4 +1,4 @@
-from flask import render_template,request,redirect,url_for
+from flask import render_template,request,redirect,url_for, flash
 from create_app import app
 from extensions import db
 from models.admin import Admin
@@ -36,6 +36,7 @@ def addLotAdmin(admin_name, login_success):
             url = url_for('homeAdmin', admin_name=admin_name, login_success=login_success)
             return redirect(url)
         except:
-            return "There was a problem registering you"
+            flash("Could not add lot")
+            return render_template('Admin/add_lot.html')
         
     return render_template("Admin/add_lot.html", admin_name=admin_name, login_success=login_success)

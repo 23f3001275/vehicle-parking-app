@@ -12,7 +12,6 @@ def homeUser(user_name,login_success):
     user=User.query.filter(User.username==user_name).first()
     reservations=ReservedParkingSpot.query.filter(ReservedParkingSpot.user_id==user.id).all()
     all_user_data=[]
-    user_history=[]
     for reservation in reservations:
         spots=ParkingSpot.query.filter(ParkingSpot.id==reservation.spot_id).all()
         for spot in spots:
@@ -22,13 +21,13 @@ def homeUser(user_name,login_success):
                     'prime_loc_name':lot.prime_loc_name,
                     'lot_id':lot.id,
                     'price': lot.price,
-                    'park_timestamp':reservation.park_timestamp,
-                    'leave_timestamp':reservation.leave_timestamp,
+                    'park_timestamp':reservation.park_timestamp.strftime('%Y-%m-%d %H:%M'),
+                    'leave_timestamp':reservation.leave_timestamp.strftime('%Y-%m-%d %H:%M'),
                     'status':str(spot.status),
                     'spot_id':spot.id,
                     'reserve_status':reservation.reserve_status,
                     'vehicle_no':reservation.vehicle_no,
-                    'reserve_timestamp':reservation.reserve_timestamp,
+                    'reserve_timestamp':reservation.reserve_timestamp.strftime('%Y-%m-%d %H:%M'),
                     'cost':reservation.park_cost_per_unit_time
                     
                 })
@@ -40,4 +39,4 @@ def homeUser(user_name,login_success):
     except:
         pass
                 
-    return render_template('user/home_user.html',user_name=user_name, login_success=login_success,all_user_data=all_user_data,user_history=user_history) 
+    return render_template('user/home_user.html',user_name=user_name, login_success=login_success,all_user_data=all_user_data) 
