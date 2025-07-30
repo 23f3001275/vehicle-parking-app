@@ -12,10 +12,10 @@ def deleteLot(admin_name,login_success,lot_id):
         try:
             db.session.delete(lot)
             db.session.commit()
-            flash("Lot successfully deleted","info")
+            flash("Lot successfully deleted","success")
             return redirect(url_for('homeAdmin',admin_name=admin_name,login_success=login_success))
         except:
-            flash("There was an error in deleting lot")  
+            flash("There was an error in deleting lot","error")  
     else:
         flash("Lot is not empty",'error')
         return redirect(url_for('homeAdmin',admin_name=admin_name,login_success=login_success))

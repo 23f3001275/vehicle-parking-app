@@ -44,9 +44,12 @@ def bookLotUser(user_name, login_success,lot_id):
         
             db.session.add(reservation)
             db.session.commit()
+            flash("Spot successfully booked","success")
             return redirect(url_for('homeUser',user_name=user_name,login_success=login_success))
         except Exception as e:
             db.session.rollback()  # Roll back in case of failure
-            flash(f'There was an error booking the lot: {str(e)}', 'danger')
+            flash(f'There was an error booking the spot: {str(e)}', 'error')
+            return redirect(url_for('homeUser',user_name=user_name,login_success=login_success))
     
+
     return render_template('User/book_lot_user.html',user_name=user_name, login_success=login_success,lot=lot,user=user,spot=spot) 

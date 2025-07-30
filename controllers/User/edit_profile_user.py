@@ -16,9 +16,10 @@ def editProfileUser(user_name,login_success):
 
         try:
             db.session.commit()
-            flash("Updated successfully")
+            flash("Updated successfully","success")
             return redirect(url_for('homeUser',user_name=user.username,login_success=True))
         except:
-            flash("There was problem editing your profile") 
+            flash("There was problem editing your profile","error") 
             return render_template('User/edit_profile_user.html',user=user,login_success=login_success,user_name=user_name)
+        
     return render_template('User/edit_profile_user.html',user=user,login_success=login_success,user_name=user_name)

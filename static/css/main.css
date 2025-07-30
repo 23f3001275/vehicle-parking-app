@@ -17,7 +17,7 @@ body {
 }
 
 .fade-out {
-    animation: fadeOut 0.5s ease-in-out 1s forwards;
+    animation: fadeOut 0.5s ease-in-out 2s forwards;
 }
 
 @keyframes fadeOut {
@@ -265,7 +265,7 @@ form .form-control:focus {
 }
 
 .user-png {
-  height: 24px;
-  width: 24px;
+  height: 30px;
+  width: 30px;
   object-fit: contain;
 }

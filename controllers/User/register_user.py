@@ -23,10 +23,11 @@ def registerUser():
         try:
             db.session.add(new_user)
             db.session.commit()
+            flash("Successfully registered","success")
             return redirect('/login_user')
             
         except:
-            flash("User already exists")
+            flash("User already exists","error")
             return render_template('User/register_user.html')
     
     return render_template('User/register_user.html')

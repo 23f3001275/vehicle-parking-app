@@ -16,7 +16,7 @@ def loginAdmin():
             flash("You are now logged in",'success')
             return redirect(url)
         else:
-            flash("Admin not found")
+            flash("Admin not found","error")
             return render_template('Admin/login_admin.html')
 
     return render_template('Admin/login_admin.html', login_success1=False)

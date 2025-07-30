@@ -32,11 +32,11 @@ def addLotAdmin(admin_name, login_success):
                 db.session.add(new_spot)
             db.session.commit()
 
-            flash("Lot is added","info")
+            flash("Lot is added","success")
             url = url_for('homeAdmin', admin_name=admin_name, login_success=login_success)
             return redirect(url)
         except:
-            flash("Could not add lot")
+            flash("Could not add lot","error")
             return render_template('Admin/add_lot.html')
         
     return render_template("Admin/add_lot.html", admin_name=admin_name, login_success=login_success)

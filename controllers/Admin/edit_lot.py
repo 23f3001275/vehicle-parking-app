@@ -29,9 +29,9 @@ def editLot(admin_name,login_success,lot_id):
        
         try:
             db.session.commit()
-            flash("Lot info successfully edited","info")
+            flash("Lot info successfully edited","success")
             return redirect(url_for('homeAdmin',admin_name=admin_name,login_success=login_success))
         except:
-            flash("there was problem editing the lot")
+            flash("there was problem editing the lot","error")
             return render_template('Admin/edit_lot.html',login_success=login_success,admin_name=admin_name,lot=lot)
     return render_template('Admin/edit_lot.html',login_success=login_success,admin_name=admin_name,lot=lot)
