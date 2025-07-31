@@ -95,9 +95,16 @@ form .form-control:focus {
 }
 
 /* Stats Grid */
-.stats-grid, .lot-stats {
+.stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.lot-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin-top: 1rem;
 }
@@ -123,6 +130,8 @@ form .form-control:focus {
     font-weight: bold;
     color: #1d2b33;
 }
+
+
 
 /* Navbar */
 .navbar {

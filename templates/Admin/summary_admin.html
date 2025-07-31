@@ -51,6 +51,10 @@
               <div class="lot-stat-label">Available</div>
               <div class="lot-stat-value">{{ lot.available_spots }}</div>
             </div>
+            <div class="lot-stat">
+              <div class="lot-stat-label">Occupied</div>
+              <div class="lot-stat-value">{{ lot.occupied_spots }}</div>
+            </div>
           </div>
           <canvas id="chart-{{ loop.index }}"></canvas>
         </div>
@@ -67,11 +71,11 @@
     new Chart(ctx, {
       type: 'pie',
       data: {
-        labels: ['Reserved', 'Available'],
+        labels: ['Reserved', 'Available','Occupied'],
         datasets: [{
           label: 'Spots',
-          data: [data.reserved, data.available],
-          backgroundColor: ['#6a0dad', '#ffcc00']
+          data: [data.reserved, data.available, data.occupied],
+          backgroundColor: ['#6a0dad', '#ffcc00','#787878']
         }]
       },
       options: {
